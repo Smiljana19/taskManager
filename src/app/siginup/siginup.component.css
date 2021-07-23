@@ -2,33 +2,31 @@
     color: #011F4B;
     overflow: hidden;
 }
-.LoginPosition{
-    margin-top: 133px;
+.SiginPosition{
     text-align: center;
 }
-@media only screen and (max-width: 450px) {
-  .LoginPosition {
-    margin-top: 30px;
+@media only screen and (max-width: 600px) {
+  .SiginPosition {
     text-align: center;
   }
 }
-.LogTitile{
-    margin-top: 25px;
+.SigTitile{
     font-size: 36px;
     font-weight: 700;
+    color: #0DB2F2;
 }
 .spaceRows{
     margin-top: 28px;
 }
-label{
-    
+.formatLblTxt{
+    position: absolute;
+    left: 38.5%;
     font-size: 16px;
     font-weight: bold;
-    margin-right: 370px;
 }
-@media only screen and (max-width: 450px) {
-    label {
-        margin-right: 270px;
+@media only screen and (max-width: 600px) {
+  .formatLblTxt {
+      left: 5%;
     }
   }
 input{
@@ -44,27 +42,13 @@ input{
     border-radius: 10px;
     padding-left: 22px;
 }
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 600px) {
     input {
         width: 350px;
     }
   }
-  .FgtPassword{
-    margin-top: 18px;
-    font-size: 14px;
-    color: #B5B5C3;
-    margin-left: 350px;
-  }
-  @media only screen and (max-width: 450px) {
-    .FgtPassword {
-      position: absolute;
-      display: inline;
-      margin-left: 240px;
-      margin-top: 20px;
-    }
-  }
   .btn{
-    margin-top: 48px;
+    margin: 48px 0px 20px 0px;
     width: 450px;
     height: 56px;
     background-color: #0DB2F2;
@@ -74,36 +58,37 @@ input{
     border-radius: 10px;
     border: none;
   }
-  @media only screen and (max-width: 450px) {
+  @media only screen and (max-width: 600px) {
     .btn {
-      margin-top: 80px;
+      margin-top: 15px;
         width: 350px;
     }
   }
   .btn:hover{
     border: 2px solid #0d9fda;
   }
-  .signUp{
-    margin-top: 28px;
+  .loginLink{
+    text-decoration: none;
+    margin-top: 35px;
     font-size: 24px;
     font-weight: bold;
     color: #0DB2F2;
   }
   .OrSignUpUsing{
-    margin-top: 43px;
+    margin-top: 13px;
     font-size: 14px;
     color: #B5B5C3;
   }
   .icons{
     padding-left: 14px;
   }
-  @media only screen and (max-width: 450px) {
+  @media only screen and (max-width: 600px) {
     .icons {
         padding-left: 5px;
     }
   }
   .container-fluid{
-    margin-top: 41px;
+    margin-top: 21px;
     position: relative;
   }
   .FooterleftText{
@@ -121,7 +106,7 @@ input{
     right: 60px;
     text-decoration: underline;
   }
-  @media only screen and (max-width: 450px) {
+  @media only screen and (max-width: 600px) {
     .FooterRightText {
       margin: 0;
       right: 10px;
