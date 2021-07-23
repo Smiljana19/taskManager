@@ -43,6 +43,7 @@ input{
     border: none;
     border-radius: 10px;
     padding-left: 22px;
+    margin-bottom: 2%;
 }
 @media only screen and (max-width: 450px) {
     input {
@@ -50,16 +51,15 @@ input{
     }
   }
   .FgtPassword{
-    margin-top: 18px;
     font-size: 14px;
     color: #B5B5C3;
-    margin-left: 350px;
+    margin-left: 335px;
   }
   @media only screen and (max-width: 450px) {
     .FgtPassword {
-      position: absolute;
+      position: relative;
       display: inline;
-      margin-left: 240px;
+      margin-left: 235px;
       margin-top: 20px;
     }
   }
@@ -73,6 +73,7 @@ input{
     font-size: 24px;
     border-radius: 10px;
     border: none;
+    margin-bottom: 2%;
   }
   @media only screen and (max-width: 450px) {
     .btn {
@@ -84,7 +85,7 @@ input{
     border: 2px solid #0d9fda;
   }
   .signUp{
-    margin-top: 28px;
+    text-decoration: none;
     font-size: 24px;
     font-weight: bold;
     color: #0DB2F2;
