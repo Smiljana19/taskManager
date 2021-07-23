@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SiginupComponent } from './siginup/siginup.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SiginupComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
