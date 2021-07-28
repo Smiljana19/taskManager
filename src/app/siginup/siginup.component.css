@@ -5,11 +5,6 @@
 .SiginPosition{
     text-align: center;
 }
-@media only screen and (max-width: 600px) {
-  .SiginPosition {
-    text-align: center;
-  }
-}
 .SigTitile{
     font-size: 36px;
     font-weight: 700;
@@ -24,11 +19,6 @@
     font-size: 16px;
     font-weight: bold;
 }
-@media only screen and (max-width: 600px) {
-  .formatLblTxt {
-      left: 5%;
-    }
-  }
 input{
     width: 450px;
     height: 56px;
@@ -42,11 +32,6 @@ input{
     border-radius: 10px;
     padding-left: 22px;
 }
-@media only screen and (max-width: 600px) {
-    input {
-        width: 350px;
-    }
-  }
   .btn{
     margin: 48px 0px 20px 0px;
     width: 450px;
@@ -57,12 +42,6 @@ input{
     font-size: 24px;
     border-radius: 10px;
     border: none;
-  }
-  @media only screen and (max-width: 600px) {
-    .btn {
-      margin-top: 15px;
-        width: 350px;
-    }
   }
   .btn:hover{
     border: 2px solid #0d9fda;
@@ -81,11 +60,6 @@ input{
   }
   .icons{
     padding-left: 14px;
-  }
-  @media only screen and (max-width: 600px) {
-    .icons {
-        padding-left: 5px;
-    }
   }
   .container-fluid{
     margin-top: 21px;
@@ -106,7 +80,51 @@ input{
     right: 60px;
     text-decoration: underline;
   }
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 280px) {
+    .icons {
+      padding-left: 5px;
+    }
+    .btn {
+      margin-top: 10%;
+        width: 100%;
+    }
+    input {
+      width: 100%;
+    }
+    .formatLblTxt {
+      left: 5%;
+    }
+    .SiginPosition {
+      text-align: center;
+    }
+    .FooterRightText {
+      position: absolute;
+    }
+    .FooterleftText{
+      position: relative;
+      left: 5%;
+    }
+  }
+  @media only screen and (max-width: 375px) {
+    .container{
+      margin-top: -10%;
+    }
+    .icons {
+      padding-left: 5px;
+    }
+    .btn {
+      margin-top: 10%;
+        width: 100%;
+    }
+    input {
+      width: 100%;
+    }
+    .formatLblTxt {
+      left: 5%;
+    }
+    .SiginPosition {
+      text-align: center;
+    }
     .FooterRightText {
       margin: 0;
       right: 10px;
@@ -114,5 +132,55 @@ input{
     }
     .FooterleftText{
       margin: 0;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .container{
+      margin-top: -15%;
+    }
+    .icons {
+      padding-left: 5px;
+    }
+    .btn {
+      margin-top: 10%;
+        width: 100%;
+    }
+    input {
+      width: 100%;
+    }
+    .formatLblTxt {
+      left: 5%;
+    }
+    .SiginPosition {
+      text-align: center;
+    }
+    .FooterRightText {
+      margin: 0;
+      right: 10px;
+      top: 0;
+    }
+    .FooterleftText{
+      margin: 0;
+    }
+  }
+  @media only screen and (max-width: 1024px) {
+    .SigTitile{
+      margin-top: 20%;
+    }
+    .icons {
+      padding-left: 5px;
+    }
+    .btn {
+      margin-top: 10%;
+        width: 100%;
+    }
+    input {
+      width: 100%;
+    }
+    .formatLblTxt {
+      left: 5%;
+    }
+    .SiginPosition {
+      text-align: center;
     }
   }

@@ -1,1 +1,82 @@
-<p>home works!</p>
+<div class="container-fluid">
+
+    <a href="javascript:void(0)" class="openClosebtnOnMobile" (click)="openClosebtnOnMobile()" *ngIf="isMobile == true">
+            <div  class="hrMobile"></div>
+            <div  class="hr2Mobile"></div>
+            <div  class="hrMobile"></div>
+    </a>
+    
+    <p class="navTitle" [style.margin-left.px]="marginLeftContent" id="main">ALL TASKS - TEST WEB APP</p> <!--Move titile text when sidebar is open-->
+
+    <span class="logUserImg">
+        <img [src] = UsrHead class="UsrHead"><br>
+        <img [src] = UsrBody class="UsrBody">
+    </span>
+    
+    <div class="curentUserLoged">
+        <p class="curentUser">AC</p>
+    </div>
+
+    <div [style.width.px]="widthmySidebar" id="mySidebar" class="sidebar" *ngIf="showHideNav == false">
+        <a href="javascript:void(0)" class="openClosebtn" (click)="OpenCloseNav()" *ngIf="isMobile == false">
+            <div  class="hr"></div>
+            <div  class="hr2"></div>
+            <div  class="hr"></div>
+        </a>
+        <a href="javascript:void(0)" class="openClosebtn" (click)="openClosebtnOnMobile()" *ngIf="isMobile == true">
+            <div  class="hr"></div>
+            <div  class="hr2"></div>
+            <div  class="hr"></div>
+        </a>
+        
+        <span *ngIf="widthmySidebar == 116">
+            <a href="#">
+                <img [src] = vector >
+                <span class="badge">3</span>
+            </a>
+            <a href="#"><div  class="hr3"></div></a>
+            <a href="#">
+                <img [src] = addIcon class="addIcon">
+            </a>
+            <a href="#">
+                <img [src] = editIcon class="editIcon">
+            </a>
+            <a href="#">
+                <img [src] = deleteIcon class="deleteIcon">
+            </a>
+            <a href="#"><div  class="hr3"></div></a>
+            <a href="#">
+                <img [src] = settingIcon class="setingIcon">
+            </a>
+        </span>
+    
+        <span *ngIf="widthmySidebar > 116">
+            <a href="#">
+                <img [src] = vector>
+                <span class="badge">3</span>
+                <p class="icosTextNot" >NOTIFICATIONS</p>
+            </a>
+            <a href="#"><div  class="hr3"></div></a>
+            <a href="#">
+                <img [src] = addIcon class="addIcon">
+                <p class="icosText" >CREATE TO DO</p>
+            </a>
+            <a href="#">
+                <img [src] = editIcon class="editIcon">
+                <p class="icosText" >EDIT TO DO</p>
+            </a>
+            <a href="#">
+                <img [src] = deleteIcon class="deleteIcon">
+                <p class="icosText" >REMOVE TO DO</p>
+            </a>
+            <a href="#"><div  class="hr3"></div></a>
+            <a href="#">
+                <img [src] = settingIcon class="setingIcon">
+                <p class="icosTextSetting" >SETTINGS</p>
+            </a>
+        </span>
+        
+      </div>
+      
+    
+</div>
