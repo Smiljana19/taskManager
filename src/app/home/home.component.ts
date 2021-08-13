@@ -1,5 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { tasksBox } from '../../Model/tasksBox';
+import { TasksService } from '../tasks.service'
 
 
 @Component({
@@ -24,10 +26,17 @@ export class HomeComponent implements OnInit {
   widtMain: Number = 263;
   marginLeftContent = 116;
 
-  public innerWidth: any;
+  showMoreBoxHeight: Number = 188;
 
-  constructor(private deviceService: DeviceDetectorService) { 
+  public innerWidth: any;
+  document: any;
+
+  taskArray: tasksBox[] = [];
+
+  constructor(private deviceService: DeviceDetectorService, private taskService: TasksService) { 
     this.isMobile = this.deviceService.isMobile();
+
+    this.taskArray = taskService.get();
   }
   
 
@@ -47,7 +56,7 @@ export class HomeComponent implements OnInit {
   }
 
   private detectScreenSize() {
-    if(window.innerWidth <= 647) {
+    if(window.innerWidth <= 375) {
       this.isMobile = true;
       this.widthmySidebar = 0; 
       this.marginLeftContent = 0;
@@ -73,8 +82,8 @@ export class HomeComponent implements OnInit {
     }
   }
   openClosebtnOnMobile(){
-    if(this.widthmySidebar == 263) {
-      this.widtMain = 263;
+    if(this.widthmySidebar == 116) {
+      this.widtMain = 116;
         if(this.showHideNav == true){
           this.widthmySidebar = 116; 
           this.marginLeftContent = 116;
@@ -85,9 +94,9 @@ export class HomeComponent implements OnInit {
         }
     }
     else {
-      this.widthmySidebar = 263; 
-      this.widtMain = 263;
-      this.marginLeftContent = 263;
+      this.widthmySidebar = 116; 
+      this.widtMain = 116;
+      this.marginLeftContent = 116;
     }
     if(this.showHideNav == true){
       this.showHideNav = false;
@@ -95,5 +104,37 @@ export class HomeComponent implements OnInit {
     else{
       this.showHideNav = true;
     }
+  }
+  showMore(id: any){
+      // if(this.showMoreInBox == true){//==
+      //   //this.showMoreInBox = false;
+      //   this.showMoreBoxHeight;
+      // }
+      // else{
+      //   //this.showMoreInBox = true;
+      //   this.boxHeight;
+      // }
+
+      var findTask = this.taskArray.find( x => x.id == id);
+      findTask?.showMore == true ? findTask.showMore = false : findTask!.showMore = true
+
+      // if(findTask?.showMore == true) {
+      //   findTask.showMore = false;
+      // }
+      // else {
+      //   if(findTask != undefined) {
+      //     findTask.showMore = true;
+      //   }
+      // }
+      
+      //tenarni operator zamena za if i else
+      //this.showMoreInBox == true ? this.showMoreInBox = false : this.showMoreInBox = true
+      // da li je ovo tacno      ?  DA odradi nesto        : ne odradi nesto
+
+      //this.showMoreInBox == true? this.showMoreBoxHeight : this.boxHeight
+
+      //this.document.getElementsByClassName("textInBox").style.display = 'block';
+    //this.infoBoxHeight = 'infoBoxChange';
+    //this.document.getElementsByClassName("infoBox").style.height = "188px";
   }
 }

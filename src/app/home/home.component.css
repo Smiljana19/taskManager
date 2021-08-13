@@ -4,7 +4,7 @@
     background-color: #F3F6F9;
 }
 .UsrHead{
-    margin-left: 50%;
+    margin-left: 55%;
     position: relative;
 }
 .UsrBody{
@@ -68,7 +68,7 @@
   }
   
   .sidebar a:hover {
-    color: #f1f1f1;
+    color: #111;
   }
   
   .sidebar .openClosebtn {
@@ -115,8 +115,8 @@
   }
   .badge {
     top: 145px;
-    margin-right: 20px;
-    position: absolute;
+    left: 3%;
+    position: fixed;
     padding: 4px 8px;
     border-radius: 50%;
     background-color: #FF7A00;
@@ -164,7 +164,139 @@
       position: absolute;
       top: 5%;
   }
-
+  label{
+    font-weight: bold;
+    font-size: 16px;
+  }
+  input{
+    width: 257px;
+    height: 45px;
+    background: #F3F6F9;
+    border: none;
+    border-radius: 10px;
+  }
+  .toDoContainer{
+      position: absolute;
+      top: 15%;
+      left: 13.3%;
+  }
+  .container{
+    position: absolute;
+    top: 20%;
+    left: 13%;
+  }
+  .toDoSelect{
+    width: 257px;
+    height: 45px;
+    background: #F3F6F9;
+    border: none;
+    border-radius: 10px;
+  }
+  .toDoInputs{
+    display:inline-block;
+    margin-left: 36px;
+  }
+  .infoBox{
+    position: relative;
+    margin: 5% 3%;
+    width: 595px;
+    height: 88px;
+    background-color: #F3F6F9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  }
+  #infoBoxChange{
+    position: relative;
+    margin: 5% 3%;
+    width: 595px;
+    height: 188px;
+    background-color: #F3F6F9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  }
+  .logUserInfoBox{
+    position: absolute;
+    top: -21%;
+    left:  -3.5%;
+    width: 42px;
+    height: 42px;
+    border-radius: 50px;
+    background-color: #005B96;
+  }
+  .logUserInfoBoxBig{
+    position: absolute;
+    top: -10%;
+    left:  -3.5%;
+    width: 42px;
+    height: 42px;
+    border-radius: 50px;
+    background-color: #005B96;
+  }
+  .userInfoBox{
+    color: #fff;
+    font-weight: bold;
+    margin-left: 25%;
+    position: absolute;
+    top: 21%;
+  }
+  .titleInfoBox{
+    font-weight: bold;
+    position: absolute;
+    left: 8%;
+    padding-top: 5%;
+    font-size: 2vh;
+    color: #9B9BA4;
+  }
+  .dateInfoBox{
+    font-weight: bold;
+    position: absolute;
+    left: 8.1%;
+    font-size: 10px;
+    padding-top: 10%;
+    color: #9B9BA4;
+  }
+  .progressInfoBox{
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    font-size: 10px;
+    padding-top: 6.5%;
+    color: #9B9BA4;
+  }
+  .dots{
+    font-weight: bold;
+    position: absolute;
+    right: 20%;
+    font-size: 40px;
+    padding-top: 0.5%;
+    color: #0DB2F2;
+    letter-spacing: 2px;
+  }
+  .logUserBigInfoBox{
+    width: 56px;
+    height: 56px;
+    background-color: #0DB2F2;
+    border-radius: 50px;
+    position: absolute;
+    right: 5%;
+    margin-top: 2.7%;
+  }
+  .textlogUserBigInfoBox{
+    color: #fff;
+    font-weight: bold;
+    margin-left: 30%;
+    position: absolute;
+    top: 28%;
+  }
+  .textInBox{
+    font-size: 13px;
+    color: #9B9BA4;
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    right: 3%;
+  }
+  a {
+    text-decoration: none;
+  }
 @media only screen and (max-width: 375px){
     .logUserImg{
         position: absolute;
@@ -178,5 +310,43 @@
     }
     .navTitle{
         display: none;
+    }
+    .badge {
+      left: 15%;
+      position: fixed;
+    }
+    .container{
+      position: absolute;
+      left: 0;
+    }
+    .infoBox{
+      position: relative;
+      left: -5%;
+      margin: 10%;
+      height: 100px;
+      width: 90%;
+    }
+    .logUserBigInfoBox{
+      display: none;
+    }
+    .progressInfoBox{
+      position: absolute;
+      top: 30%;
+      left: 44%;
+    }
+    .dots{
+      position: absolute;
+      top: 35%;
+      left: 47%;
+    }
+    .titleInfoBox{
+      position: absolute;
+      top: -5%;
+      left: 30%;
+    }
+    .dateInfoBox{
+      position: absolute;
+      top: 4%;
+      left: 33%;
     }
 }
