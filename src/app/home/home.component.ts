@@ -33,6 +33,8 @@ export class HomeComponent implements OnInit {
 
   taskArray: tasksBox[] = [];
 
+  isShown: boolean = false ;
+
   constructor(private deviceService: DeviceDetectorService, private taskService: TasksService) { 
     this.isMobile = this.deviceService.isMobile();
 
@@ -133,8 +135,10 @@ export class HomeComponent implements OnInit {
 
       //this.showMoreInBox == true? this.showMoreBoxHeight : this.boxHeight
 
-      //this.document.getElementsByClassName("textInBox").style.display = 'block';
-    //this.infoBoxHeight = 'infoBoxChange';
-    //this.document.getElementsByClassName("infoBox").style.height = "188px";
   }
+  openPopUp(){
+    this.isShown == false? this.isShown = true : this.isShown = false
+    
+  }
+
 }

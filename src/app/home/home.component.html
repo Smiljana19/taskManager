@@ -37,8 +37,8 @@
                 <span class="badge" *ngFor="let x of taskArray">{{x.id}}</span>
             </a>
             <a href="#"><div  class="hr3"></div></a>
-            <a href="#">
-                <img [src] = addIcon class="addIcon">
+            <a>
+                <img [src] = addIcon class="addIcon" (click)="openPopUp()">
             </a>
             <a href="#">
                 <img [src] = editIcon class="editIcon">
@@ -166,5 +166,32 @@
     
 </div>
 
- <!--PopUp Form-->
- 
+<div class="container">
+    
+    <div class="popUpForm" *ngIf="isShown == true">
+
+        <div class="spaceBetweenInputs">
+            <label class="lbl">To Do name</label><br>
+            <input type="text" class="formInput" placeholder="Type a TO DO name">
+        </div>
+
+        <div class="spaceBetweenInputs">
+            <label class="lbl">TO DO status</label><br>
+            <input type="text" class="formInput" placeholder="Pick a status">
+        </div>
+
+        <div class="spaceBetweenInputs">
+            <label class="lbl">Assigned To</label><br>
+            <input type="text" class="formInput" placeholder="Enter name or email address">
+        </div>
+
+        <div class="spaceBetweenInputs">
+            <label class="lbl">Description</label><br>
+            <textarea></textarea>
+        </div>
+        
+        <button class="btn">+ Add TO DO</button>
+        
+    </div>
+
+</div>

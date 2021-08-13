@@ -297,6 +297,45 @@
   a {
     text-decoration: none;
   }
+
+  .popUpForm{
+    position: relative;
+    width: 547px;
+    height: 781px;
+    background-color: lightgoldenrodyellow;
+    border-radius: 10px;
+    left: 35%;
+    margin-top: -10%;
+  }
+  .spaceBetweenInputs{
+    position: relative;
+    top: 5%;
+    left: 9%;
+    margin-top: 5%;
+  }
+  .formInput{
+    width: 450px;
+    font-size: 14px;
+    padding-left: 3%;
+  }
+  textarea{
+    width: 450px;
+    height: 307px;
+    background: #F3F6F9;
+    border-radius: 10px;
+    border: none;
+    resize: none;
+  }
+  .btn{
+    position: absolute;
+    top: 90%;
+    left: 34%;
+    color: #fff;
+    background: #0DB2F2;
+    border-radius: 30px;
+    width: 177px;
+    height: 49.31px;
+  }
 @media only screen and (max-width: 375px){
     .logUserImg{
         position: absolute;
