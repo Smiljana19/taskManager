@@ -138,7 +138,17 @@ export class HomeComponent implements OnInit {
   }
   openPopUp(){
     this.isShown == false? this.isShown = true : this.isShown = false
-    
+
+    if(this.isShown == true)
+    {
+      document.body.style.background = '#4accff',
+      document.body.style.opacity = '0.3'
+    }
+    else{
+      document.body.style.background = 'white',
+      document.body.style.opacity = ''
+    }
+
   }
 
 }
