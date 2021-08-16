@@ -33,7 +33,12 @@ export class HomeComponent implements OnInit {
 
   taskArray: tasksBox[] = [];
 
-  isShown: boolean = false ;
+  isShown: boolean = false;
+
+  buttonOpacity = 1;
+
+  popUpForm:string = 'popUpForm';
+
 
   constructor(private deviceService: DeviceDetectorService, private taskService: TasksService) { 
     this.isMobile = this.deviceService.isMobile();
@@ -139,15 +144,15 @@ export class HomeComponent implements OnInit {
   openPopUp(){
     this.isShown == false? this.isShown = true : this.isShown = false
 
-    if(this.isShown == true)
-    {
-      document.body.style.background = '#4accff',
-      document.body.style.opacity = '0.3'
-    }
-    else{
-      document.body.style.background = 'white',
-      document.body.style.opacity = ''
-    }
+    //if(this.isShown == true)
+    //{
+    // document.body.style.background = 'rgba(13, 178, 242, 0.3)',
+    //document.body.style.opacity = '0.3'
+      //  }
+    //else{
+    //document.body.style.background = 'white',
+    //  document.body.style.opacity = ''
+    //  }
 
   }
 

@@ -1,4 +1,3 @@
-<body>
     <div class="container-fluid"><!--Navigation-->
 
         <a href="javascript:void(0)" class="openClosebtnOnMobile" (click)="openClosebtnOnMobile()" *ngIf="isMobile == true">
@@ -166,12 +165,11 @@
     
         
     </div>
-</body>
 
 
 <div class="container">
     
-    <div class="popUpForm" *ngIf="isShown == true">
+    <div class="popUpForm" *ngIf="isShown == true" [style.opacity]="buttonOpacity">
 
         <div class="spaceBetweenInputs">
             <label class="lbl">To Do name</label><br>
