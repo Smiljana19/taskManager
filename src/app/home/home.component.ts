@@ -35,9 +35,11 @@ export class HomeComponent implements OnInit {
 
   isShown: boolean = false;
 
-  buttonOpacity = 1;
 
   popUpForm:string = 'popUpForm';
+
+  private element: any;
+  dialogRef: any;
 
 
   constructor(private deviceService: DeviceDetectorService, private taskService: TasksService) { 
@@ -77,15 +79,17 @@ export class HomeComponent implements OnInit {
   }
 
   OpenCloseNav() {
-    if(this.widthmySidebar == 263) {
-      this.widthmySidebar = 116; 
-      this.widtMain = 263;
-      this.marginLeftContent = 116;
-    }
-    else {
-      this.widthmySidebar = 263; 
-      this.widtMain = 263;
-      this.marginLeftContent = 263;
+    if(this.isShown == false){
+      if(this.widthmySidebar == 263) {
+        this.widthmySidebar = 116; 
+        this.widtMain = 263;
+        this.marginLeftContent = 116;
+      }
+      else {
+        this.widthmySidebar = 263; 
+        this.widtMain = 263;
+        this.marginLeftContent = 263;
+      }
     }
   }
   openClosebtnOnMobile(){
@@ -144,16 +148,20 @@ export class HomeComponent implements OnInit {
   openPopUp(){
     this.isShown == false? this.isShown = true : this.isShown = false
 
-    //if(this.isShown == true)
-    //{
-    // document.body.style.background = 'rgba(13, 178, 242, 0.3)',
-    //document.body.style.opacity = '0.3'
-      //  }
-    //else{
-    //document.body.style.background = 'white',
-    //  document.body.style.opacity = ''
-    //  }
+    if(this.isShown == true)
+    {
+      document.body.style.background = '#0DB2F24D';
+    }
+    else{
+      document.body.style.background = 'white'
+    }
 
   }
-
+  closePopUp() {
+    if(this.isShown == true)
+    {
+      this.isShown = false;
+      document.body.style.background = 'white';
+    }
+  }
 }
