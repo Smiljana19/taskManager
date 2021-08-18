@@ -44,7 +44,7 @@
                     <img [src] = editIcon class="editIcon">
                 </a>
                 <a>
-                    <img [src] = deleteIcon class="deleteIcon">
+                    <img [src] = deleteIcon class="deleteIcon" (click)="deleteIconNav()">
                 </a>
                 <a><div  class="hr3"></div></a>
                 <a>
@@ -68,7 +68,7 @@
                     <p class="icosText" >EDIT TO DO</p>
                 </a>
                 <a>
-                    <img [src] = deleteIcon class="deleteIcon">
+                    <img [src] = deleteIcon class="deleteIcon" (click)="deleteIconNav()">
                     <p class="icosText" >REMOVE TO DO</p>
                 </a>
                 <a><div  class="hr3"></div></a>
@@ -113,11 +113,11 @@
         <!--infoBox-->
         <span *ngFor="let x of taskArray">
     
-            <!--infoBox-->
-                <div class="infoBox" *ngIf="x.showMore == false">
-    
+            <div class="infoBox" *ngIf="x.showMore == false">
+                <button type="button" class="btnDeleteInfoBox" *ngIf="showX == true">X</button>
+
                     <div class="logUserInfoBox">
-                        <span class="userInfoBox">{{x.owner}}</span>
+                        <span class="userInfoBox">{{x.owner[0]}}{{x.owner[1]}}</span>
                     </div>
     
                     <p class="titleInfoBox">{{x.title}}</p>
@@ -129,7 +129,7 @@
                         <a href="javascript:void(0)" class="dots" (click)="showMore(x.id)">...</a>
     
                         <div class="logUserBigInfoBox">
-                            <p class="textlogUserBigInfoBox">{{x.user}}</p>
+                            <p class="textlogUserBigInfoBox">{{x.user[0]}}{{x.user[1]}}</p>
                         </div>
                 </div>
             <!--End infoBox-->
@@ -137,9 +137,9 @@
     
     
             <div class="infoBox" *ngIf="x.showMore == true" [style.height.px]="showMoreBoxHeight" >
-    
+                <button type="button" class="btnDeleteInfoBox" *ngIf="showX == true">X</button>
                 <div class="logUserInfoBoxBig">
-                    <span class="userInfoBox">{{x.owner}}</span>
+                    <span class="userInfoBox">{{x.owner[0]}}{{x.owner[1]}}</span>
                 </div>
         
                 <p class="titleInfoBox">{{x.title}}</p>
@@ -151,7 +151,7 @@
                     <a href="javascript:void(0)" class="dots" (click)="showMore(x.id)">...</a>
         
                     <div class="logUserBigInfoBox">
-                        <p class="textlogUserBigInfoBox">{{x.user}}</p>
+                        <p class="textlogUserBigInfoBox">{{x.user[0]}}{{x.user[1]}}</p>
                     </div>
         
                     <p class="textInBox">{{x.text}}</p>
@@ -161,40 +161,39 @@
     
         </div>
     
-        
     </div>
 
-
+<!--popUpForm-->
 <div class="container">
     
     <div class="popUpForm" *ngIf="isShown == true">
         <button type="button" class="btnClosePopUp" (click)="closePopUp()">X</button>
         <div class="spaceBetweenInputs">
             <label class="lbl">To Do name</label><br>
-            <input type="text" class="form-control formInput" placeholder="Type a TO DO name">
+            <input [(ngModel)]="task.title" type="text" class="form-control formInput" placeholder="Type a TO DO name">
         </div>
 
         <div class="spaceBetweenInputs">
             <label class="lbl">TO DO status</label><br>
-                <select class="form-select">
+                <select class="form-select" [(ngModel)]="selectedValue">
                     <option value="" disabled selected>Pick a status</option>
-                    <option value="1">In progress</option>
-                    <option value="2">Completed</option>
+                    <option *ngFor="let x of status" [ngValue]="x.name">{{x.name}}</option>
                 </select>
         </div>
 
         <div class="spaceBetweenInputs">
             <label class="lbl">Assigned To</label><br>
-            <input type="text" class="form-control formInput" placeholder="Enter name or email address">
+            <input [(ngModel)]="task.user"  type="text" class="form-control formInput" placeholder="Enter name or email address">
         </div>
 
         <div class="spaceBetweenInputs">
             <label class="lbl">Description</label><br>
-            <textarea class="form-control"></textarea>
+            <textarea [(ngModel)]="task.text" class="form-control"></textarea>
         </div>
         
-        <button class="btn">+ Add TO DO</button>
+        <button class="btn" (click)="addNewTaskBox()">+ Add TO DO</button>
         
     </div>
 
 </div>
+<!--popUpForm-->

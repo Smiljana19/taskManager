@@ -17,11 +17,19 @@ export class TasksService {
     const box3 = new tasksBox(3, 'Create UX design', new Date() ,'In progress','AY','UR', false, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
     const box4 = new tasksBox(4, 'Create HTML layout', new Date() ,'Completed','LP','UR', false , 'Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
 
-    this.taskArray.push(box);
-    this.taskArray.push(box2);
-    this.taskArray.push(box3);
-    this.taskArray.push(box4);
+    if(this.taskArray.length==0){
+      this.taskArray.push(box);
+      this.taskArray.push(box2);
+      this.taskArray.push(box3);
+      this.taskArray.push(box4);
+    }
+    
 
     return this.taskArray;
+  }
+  insert(task: tasksBox) {
+    let id = this.taskArray.length+1;
+    task.id = id;
+    this.taskArray.push(task);
   }
 }

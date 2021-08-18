@@ -16,6 +16,7 @@ export class AuthService {
     console.log(password);
     this.isUserLoggedIn = userName == 'admin' && password == 'admin';
     localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false"); 
+    localStorage.setItem('LoginUser', userName); 
 
  return of(this.isUserLoggedIn).pipe(
     delay(1000),

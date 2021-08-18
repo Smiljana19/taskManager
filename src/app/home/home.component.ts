@@ -32,14 +32,15 @@ export class HomeComponent implements OnInit {
   document: any;
 
   taskArray: tasksBox[] = [];
+  task: tasksBox = new tasksBox(0, "", new Date(), "", "", "", false, "");
 
   isShown: boolean = false;
 
+  deleteIkon = true;
+  showX = false;
 
   popUpForm:string = 'popUpForm';
-
-  private element: any;
-  dialogRef: any;
+  router: any;
 
 
   constructor(private deviceService: DeviceDetectorService, private taskService: TasksService) { 
@@ -47,6 +48,12 @@ export class HomeComponent implements OnInit {
 
     this.taskArray = taskService.get();
   }
+
+  status = [
+    {id: 1, name: "In progress"},
+    {id: 2, name: "Completed"}
+ ];
+ selectedValue = '';
   
 
   ngOnInit(): void {
@@ -151,6 +158,10 @@ export class HomeComponent implements OnInit {
     if(this.isShown == true)
     {
       document.body.style.background = '#0DB2F24D';
+      if(window.innerWidth <= 375){
+        this.showHideNav = true;
+      }
+      window.scroll(0,0);
     }
     else{
       document.body.style.background = 'white'
@@ -164,4 +175,36 @@ export class HomeComponent implements OnInit {
       document.body.style.background = 'white';
     }
   }
+  addNewTaskBox(){
+    let getLoginUser =  localStorage.getItem('LoginUser');
+
+    if(getLoginUser !== null){
+      this.task.owner = getLoginUser;
+
+      this.taskService.insert(this.task);
+    }
+    else {
+      this.router.navigate(['/'])
+      //redirektuj na login jer korisnik je prestao da vazi
+    }
+
+    if(this.isShown == true)
+    {
+      this.isShown = false;
+      document.body.style.background = 'white';
+    }
+
+    this.task = new tasksBox(0, "", new Date(), "", "", "", false, "");
+  }
+  deleteIconNav(){
+    if(this.deleteIkon == true){
+      if(this.showX == false){
+        this.showX = true;
+      }
+      else{
+        this.showX = false;
+      }
+    }
+  }
+
 }
