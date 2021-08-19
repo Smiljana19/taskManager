@@ -34,7 +34,7 @@
             <span *ngIf="widthmySidebar == 116">
                 <a>
                     <img [src] = vector >
-                    <span class="badge" *ngFor="let x of taskArray">{{x.id}}</span>
+                    <span class="badge">{{taskArray.length}}</span>
                 </a>
                 <a><div  class="hr3"></div></a>
                 <a>
@@ -55,21 +55,21 @@
             <span *ngIf="widthmySidebar > 116">
                 <a>
                     <img [src] = vector>
-                    <span class="badge" *ngFor="let x of taskArray">{{x.id}}</span>
+                    <span class="badge">{{taskArray.length}}</span>
                     <p class="icosTextNot" >NOTIFICATIONS</p>
                 </a>
                 <a><div  class="hr3"></div></a>
                 <a>
                     <img [src] = addIcon class="addIcon" (click)="openPopUp()">
-                    <p class="icosText" >CREATE TO DO</p>
+                    <p class="icosText" >CREATE TASK</p>
                 </a>
                 <a>
                     <img [src] = editIcon class="editIcon">
-                    <p class="icosText" >EDIT TO DO</p>
+                    <p class="icosText" >EDIT TASK</p>
                 </a>
                 <a>
                     <img [src] = deleteIcon class="deleteIcon" (click)="deleteIconNav()">
-                    <p class="icosText" >REMOVE TO DO</p>
+                    <p class="icosText" >REMOVE TASK</p>
                 </a>
                 <a><div  class="hr3"></div></a>
                 <a>
@@ -100,11 +100,10 @@
       
             <span class="toDoInputs">
               <label>TO DO status</label>
-              <select class="form-control toDoSelect">
-                <option value="" disabled selected>Pick a status</option>
-                <option value="1">In progress</option>
-                <option value="2">Completed</option>
-            </select>
+              <select class="toDoSelect form-control" [(ngModel)]="selectedValue">
+                    <option value="" disabled selected>Pick a status</option>
+                    <option *ngFor="let x of status" [ngValue]="x.name">{{x.name}}</option>
+              </select>
               
             </span>
          <!--End toDoInputs-->
@@ -114,7 +113,7 @@
         <span *ngFor="let x of taskArray">
     
             <div class="infoBox" *ngIf="x.showMore == false">
-                <button type="button" class="btnDeleteInfoBox" *ngIf="showX == true">X</button>
+                <button type="button" class="btnDeleteInfoBox" *ngIf="showX == true" (click)='deleteBox(x)' data-toggle="tooltip" title="Delete task">X</button>
 
                     <div class="logUserInfoBox">
                         <span class="userInfoBox">{{x.owner[0]}}{{x.owner[1]}}</span>
@@ -137,7 +136,7 @@
     
     
             <div class="infoBox" *ngIf="x.showMore == true" [style.height.px]="showMoreBoxHeight" >
-                <button type="button" class="btnDeleteInfoBox" *ngIf="showX == true">X</button>
+                <button type="button" class="btnDeleteInfoBox" *ngIf="showX == true" (click)="deleteBox(x)" data-toggle="tooltip" title="Delete task">X</button>
                 <div class="logUserInfoBoxBig">
                     <span class="userInfoBox">{{x.owner[0]}}{{x.owner[1]}}</span>
                 </div>
@@ -166,16 +165,16 @@
 <!--popUpForm-->
 <div class="container">
     
-    <div class="popUpForm" *ngIf="isShown == true">
+    <form class="popUpForm" *ngIf="isShown == true">
         <button type="button" class="btnClosePopUp" (click)="closePopUp()">X</button>
         <div class="spaceBetweenInputs">
             <label class="lbl">To Do name</label><br>
-            <input [(ngModel)]="task.title" type="text" class="form-control formInput" placeholder="Type a TO DO name">
+            <input [(ngModel)]="task.title" type="text" class="form-control formInput" placeholder="Type a TO DO name" name="ToDoName">
         </div>
 
         <div class="spaceBetweenInputs">
             <label class="lbl">TO DO status</label><br>
-                <select class="form-select" [(ngModel)]="selectedValue">
+                <select class="form-select" [(ngModel)]="selectedValue" name="ToDoStatus">
                     <option value="" disabled selected>Pick a status</option>
                     <option *ngFor="let x of status" [ngValue]="x.name">{{x.name}}</option>
                 </select>
@@ -183,17 +182,17 @@
 
         <div class="spaceBetweenInputs">
             <label class="lbl">Assigned To</label><br>
-            <input [(ngModel)]="task.user"  type="text" class="form-control formInput" placeholder="Enter name or email address">
+            <input [(ngModel)]="task.user"  type="text" class="form-control formInput" placeholder="Enter name or email address" name="Address">
         </div>
 
         <div class="spaceBetweenInputs">
             <label class="lbl">Description</label><br>
-            <textarea [(ngModel)]="task.text" class="form-control"></textarea>
+            <textarea [(ngModel)]="task.text" class="form-control" [ngModelOptions]="{standalone: true}"></textarea>
         </div>
         
         <button class="btn" (click)="addNewTaskBox()">+ Add TO DO</button>
         
-    </div>
+    </form>
 
 </div>
 <!--popUpForm-->

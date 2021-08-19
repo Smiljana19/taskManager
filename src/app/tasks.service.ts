@@ -24,12 +24,17 @@ export class TasksService {
       this.taskArray.push(box4);
     }
     
-
     return this.taskArray;
   }
   insert(task: tasksBox) {
     let id = this.taskArray.length+1;
     task.id = id;
     this.taskArray.push(task);
+  }
+  delete(task: tasksBox) {
+    const index: number = this.taskArray.indexOf(task);
+    if (index !== -1) {
+      this.taskArray.splice(index, 1);
+    }
   }
 }

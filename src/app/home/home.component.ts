@@ -2,6 +2,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { tasksBox } from '../../Model/tasksBox';
 import { TasksService } from '../tasks.service'
+import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -42,6 +44,7 @@ export class HomeComponent implements OnInit {
   popUpForm:string = 'popUpForm';
   router: any;
 
+  
 
   constructor(private deviceService: DeviceDetectorService, private taskService: TasksService) { 
     this.isMobile = this.deviceService.isMobile();
@@ -193,7 +196,6 @@ export class HomeComponent implements OnInit {
       this.isShown = false;
       document.body.style.background = 'white';
     }
-
     this.task = new tasksBox(0, "", new Date(), "", "", "", false, "");
   }
   deleteIconNav(){
@@ -205,6 +207,10 @@ export class HomeComponent implements OnInit {
         this.showX = false;
       }
     }
+  }
+  deleteBox(task: any){
+    this.taskService.delete(task);
+    this.taskArray.length;
   }
 
 }
