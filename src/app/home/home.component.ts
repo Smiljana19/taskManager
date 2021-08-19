@@ -44,9 +44,10 @@ export class HomeComponent implements OnInit {
   popUpForm:string = 'popUpForm';
   router: any;
 
-  
+  registerForm!: FormGroup;
+  submitted = false;
 
-  constructor(private deviceService: DeviceDetectorService, private taskService: TasksService) { 
+  constructor(private deviceService: DeviceDetectorService, private taskService: TasksService, private formBuilder: FormBuilder) { 
     this.isMobile = this.deviceService.isMobile();
 
     this.taskArray = taskService.get();
@@ -61,6 +62,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.innerWidth = window.innerWidth;
+
+    this.registerForm = this.formBuilder.group({
+      ToDoName: ['', Validators.required],
+      Address: ['', Validators.required]
+    });
   }
 
   @HostListener("window:resize", [])
@@ -212,5 +218,21 @@ export class HomeComponent implements OnInit {
     this.taskService.delete(task);
     this.taskArray.length;
   }
+  // convenience getter for easy access to form fields
+  get f() { return this.registerForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+        return;
+    }
+    else{
+      this.addNewTaskBox();
+    }
+
+    // display form values on success
+    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+}
 
 }

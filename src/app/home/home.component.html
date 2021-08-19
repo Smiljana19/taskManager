@@ -165,16 +165,25 @@
 <!--popUpForm-->
 <div class="container">
     
-    <form class="popUpForm" *ngIf="isShown == true">
-        <button type="button" class="btnClosePopUp" (click)="closePopUp()">X</button>
+    <form class="popUpForm" *ngIf="isShown == true" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
         <div class="spaceBetweenInputs">
             <label class="lbl">To Do name</label><br>
-            <input [(ngModel)]="task.title" type="text" class="form-control formInput" placeholder="Type a TO DO name" name="ToDoName">
+            <input [(ngModel)]="task.title" 
+                type="text" 
+                class="form-control formInput" 
+                placeholder="Type a TO DO name" 
+                formControlName="ToDoName" 
+                [ngClass]="{ 'is-invalid': submitted && f.ToDoName.errors }">
+
+                <div *ngIf="submitted && f.ToDoName.errors" class="invalid-feedback">
+                    <div *ngIf="f.ToDoName.errors.required">To Do Name is required</div>
+                </div>
         </div>
 
         <div class="spaceBetweenInputs">
             <label class="lbl">TO DO status</label><br>
-                <select class="form-select" [(ngModel)]="selectedValue" name="ToDoStatus">
+                <select class="form-select" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
                     <option value="" disabled selected>Pick a status</option>
                     <option *ngFor="let x of status" [ngValue]="x.name">{{x.name}}</option>
                 </select>
@@ -182,7 +191,16 @@
 
         <div class="spaceBetweenInputs">
             <label class="lbl">Assigned To</label><br>
-            <input [(ngModel)]="task.user"  type="text" class="form-control formInput" placeholder="Enter name or email address" name="Address">
+            <input [(ngModel)]="task.user"  
+            type="text" 
+            class="form-control formInput" 
+            placeholder="Enter name or email address"
+            formControlName="Address" 
+            [ngClass]="{ 'is-invalid': submitted && f.Address.errors }">
+
+                <div *ngIf="submitted && f.Address.errors" class="invalid-feedback">
+                    <div *ngIf="f.Address.errors.required">Email address is required</div>
+                </div>
         </div>
 
         <div class="spaceBetweenInputs">
@@ -190,7 +208,9 @@
             <textarea [(ngModel)]="task.text" class="form-control" [ngModelOptions]="{standalone: true}"></textarea>
         </div>
         
-        <button class="btn" (click)="addNewTaskBox()">+ Add TO DO</button>
+        <input type="submit" value="+ Add TO DO" class="btn">
+        <!-- <button class="btn" (click)="addNewTaskBox()">+ Add TO DO</button> -->
+        <button type="button" class="btnClosePopUp" (click)="closePopUp()">X</button>
         
     </form>
 
