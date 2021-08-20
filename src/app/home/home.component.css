@@ -212,12 +212,6 @@
     transform-origin: 0 0;
     transition: transform .5s ease;
   }
-  ::ng-deep .tooltip {
-    /* your own custom styles here */ 
-    /* e.g. */
-    color: yellow;
-}
-Anoth
   #infoBoxChange{
     position: relative;
     margin: 5% 3%;
@@ -310,17 +304,23 @@ Anoth
     left: 8%;
     right: 3%;
   }
+  .editTask{
+    position: absolute;
+    top: 85%;
+    left: 8%;
+    cursor: pointer;
+  }
+  .editBox{
+    position: absolute;
+    top: 10%;
+    right: 1%;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+  }
   a {
     text-decoration: none;
   }
-  body :not(#unblurred){
-    filter: blur(2px);    
-}
-#unblurred #box {
-    background:yellow; 
-    border:2px solid black; 
-    filter: blur(0px);
-}
   .popUpForm{
     position: relative;
     width: 547px;
@@ -369,7 +369,7 @@ Anoth
   }
   textarea{
     width: 450px;
-    height: 307px;
+    height: 280px;
     background: #F3F6F9;
     border-radius: 10px;
     border: none;

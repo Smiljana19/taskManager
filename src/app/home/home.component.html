@@ -14,7 +14,7 @@
         </span>
         
         <div class="curentUserLoged">
-            <p class="curentUser">AC</p>
+            <p class="curentUser">{{loginUser[0]}}{{loginUser[1]}}</p>
         </div>
     <!--End navigation-->
     
@@ -41,7 +41,7 @@
                     <img [src] = addIcon class="addIcon" (click)="openPopUp()">
                 </a>
                 <a>
-                    <img [src] = editIcon class="editIcon">
+                    <img [src] = editIcon class="editIcon" (click)="editTaskIcon()">
                 </a>
                 <a>
                     <img [src] = deleteIcon class="deleteIcon" (click)="deleteIconNav()">
@@ -64,7 +64,7 @@
                     <p class="icosText" >CREATE TASK</p>
                 </a>
                 <a>
-                    <img [src] = editIcon class="editIcon">
+                    <img [src] = editIcon class="editIcon" (click)="editTaskIcon()">
                     <p class="icosText" >EDIT TASK</p>
                 </a>
                 <a>
@@ -113,7 +113,7 @@
         <span *ngFor="let x of taskArray">
     
             <div class="infoBox" *ngIf="x.showMore == false">
-                <button type="button" class="btnDeleteInfoBox" *ngIf="showX == true" (click)='deleteBox(x)' data-toggle="tooltip" title="Delete task">X</button>
+                <button type="button" class="btnDeleteInfoBox" *ngIf="showX == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" (click)='deleteBox(x)' data-toggle="tooltip" title="Delete task">X</button>
 
                     <div class="logUserInfoBox">
                         <span class="userInfoBox">{{x.owner[0]}}{{x.owner[1]}}</span>
@@ -130,12 +130,13 @@
                         <div class="logUserBigInfoBox">
                             <p class="textlogUserBigInfoBox">{{x.user[0]}}{{x.user[1]}}</p>
                         </div>
+                        <img [src] = editBox class="editBox" *ngIf="showEditButton == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()">
                 </div>
             <!--End infoBox-->
     
     
     
-            <div class="infoBox" *ngIf="x.showMore == true" [style.height.px]="showMoreBoxHeight" >
+            <div class="infoBox" *ngIf="x.showMore == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" [style.height.px]="showMoreBoxHeight" >
                 <button type="button" class="btnDeleteInfoBox" *ngIf="showX == true" (click)="deleteBox(x)" data-toggle="tooltip" title="Delete task">X</button>
                 <div class="logUserInfoBoxBig">
                     <span class="userInfoBox">{{x.owner[0]}}{{x.owner[1]}}</span>
@@ -154,6 +155,8 @@
                     </div>
         
                     <p class="textInBox">{{x.text}}</p>
+
+                    <img [src] = editBox class="editBox" *ngIf="showEditButton == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()">
             </div>
         </span>
         <!--End infoBox-->
@@ -189,7 +192,7 @@
                 </select>
         </div>
 
-        <div class="spaceBetweenInputs">
+    <div class="spaceBetweenInputs">
             <label class="lbl">Assigned To</label><br>
             <input [(ngModel)]="task.user"  
             type="text" 
@@ -205,7 +208,10 @@
 
         <div class="spaceBetweenInputs">
             <label class="lbl">Description</label><br>
-            <textarea [(ngModel)]="task.text" class="form-control" [ngModelOptions]="{standalone: true}"></textarea>
+            <textarea [(ngModel)]="task.text" class="form-control" formControlName="Description" [ngClass]="{ 'is-invalid': submitted && f.Description.errors }"></textarea>
+                <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
+                    <div *ngIf="f.Description.errors.required">Description is required</div>
+                </div>
         </div>
         
         <input type="submit" value="+ Add TO DO" class="btn">

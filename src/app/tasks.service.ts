@@ -12,10 +12,10 @@ export class TasksService {
   constructor() { }
 
   get(){
-    const box = new tasksBox(1, 'Create UX design', new Date() ,'In progress','OV','UR', false, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
-    const box2 = new tasksBox(2, 'Create HTML layout', new Date() ,'Completed','KS','UR', false , 'Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
-    const box3 = new tasksBox(3, 'Create UX design', new Date() ,'In progress','AY','UR', false, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
-    const box4 = new tasksBox(4, 'Create HTML layout', new Date() ,'Completed','LP','UR', false , 'Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
+    const box = new tasksBox(1, 'Create UX design', new Date() ,'In progress','admin','admin', false, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
+    const box2 = new tasksBox(2, 'Create HTML layout', new Date() ,'Completed','admin','admin', false , 'Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
+    const box3 = new tasksBox(3, 'Create UX design', new Date() ,'In progress','Amel','Amel', false, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
+    const box4 = new tasksBox(4, 'Create HTML layout', new Date() ,'Completed','Smiljana','Smiljana', false , 'Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
 
     if(this.taskArray.length==0){
       this.taskArray.push(box);
@@ -36,5 +36,10 @@ export class TasksService {
     if (index !== -1) {
       this.taskArray.splice(index, 1);
     }
+  }
+  update(task: tasksBox){
+    let index = this.taskArray.indexOf(task);
+    task.id = index;
+    this.taskArray[index] = task;
   }
 }

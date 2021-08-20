@@ -13,6 +13,7 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
 
+  //VARIABLES START
   UsrHead:string ="assets/img/UsrHead.svg";
   UsrBody:string ="assets/img/UsrBody.svg";
   vector:string ="assets/img/vector.svg";
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
   editIcon:string ="assets/img/editIcon.svg";
   deleteIcon:string ="assets/img/deleteIcon.svg";
   settingIcon:string ="assets/img/settingIcon.svg";
+  editBox:string ="assets/img/editBox.svg";
 
   isMobile = false;
   showHideNav = false;
@@ -41,16 +43,26 @@ export class HomeComponent implements OnInit {
   deleteIkon = true;
   showX = false;
 
-  popUpForm:string = 'popUpForm';
   router: any;
 
   registerForm!: FormGroup;
   submitted = false;
 
+  editIkon = true;
+  showEditButton = false;
+
+  loginUser = '';
+  //VARIABLES END
+
   constructor(private deviceService: DeviceDetectorService, private taskService: TasksService, private formBuilder: FormBuilder) { 
     this.isMobile = this.deviceService.isMobile();
 
     this.taskArray = taskService.get();
+
+    let getLoginUser =  localStorage.getItem("LoginUser");
+    if(getLoginUser !== null){
+      this.loginUser = getLoginUser;
+    }
   }
 
   status = [
@@ -65,7 +77,8 @@ export class HomeComponent implements OnInit {
 
     this.registerForm = this.formBuilder.group({
       ToDoName: ['', Validators.required],
-      Address: ['', Validators.required]
+      Address: ['', Validators.required],
+      Description: ['', Validators.required]
     });
   }
 
@@ -194,7 +207,7 @@ export class HomeComponent implements OnInit {
     }
     else {
       this.router.navigate(['/'])
-      //redirektuj na login jer korisnik je prestao da vazi
+      //redirektuj na login jer je korisnik prestao da vazi
     }
 
     if(this.isShown == true)
@@ -218,11 +231,18 @@ export class HomeComponent implements OnInit {
     this.taskService.delete(task);
     this.taskArray.length;
   }
+  editTaskIcon(){
+    if(this.editIkon == true){
+      this.showEditButton == false? this.showEditButton = true : this.showEditButton = false
+    }
+  }
+
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
     this.submitted = true;
+
     // stop here if form is invalid
     if (this.registerForm.invalid) {
         return;
@@ -230,9 +250,12 @@ export class HomeComponent implements OnInit {
     else{
       this.addNewTaskBox();
     }
+  }
+  showEditInBox(){
+    
+  }
+  updateBox(){
 
-    // display form values on success
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
-}
+  }
 
 }
