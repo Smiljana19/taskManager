@@ -185,10 +185,9 @@
         </div>
 
         <div class="spaceBetweenInputs">
-            <label class="lbl">TO DO status {{selectedValue}} {{task.status}}</label><br>
+            <label class="lbl">TO DO status</label><br>
                 <select class="form-select" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
-                    <option *ngIf="task.status==''" value="" disabled>Pick a status</option>
-                    <option *ngIf="task.status!==''" value="task.status" disabled>{{task.status}}</option>
+                    <option value="" disabled>Pick a status</option>
                     <option *ngFor="let x of status" [ngValue]="x.name">{{x.name}}</option>
                 </select>
         </div>

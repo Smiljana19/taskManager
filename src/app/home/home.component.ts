@@ -194,14 +194,16 @@ export class HomeComponent implements OnInit {
     this.showTrash = false;
     this.showEditButton = false;
     this.addOrEdit = "+ Add TO DO";
+    this.selectedValue = "";
   }
   closePopUp() {
     if(this.isShown == true)
     {
       this.isShown = false;
       document.body.style.background = 'white';
-      
+      this.task= new tasksBox(0, "", new Date(), "", "", "", false, "");
     }
+
   }
   addNewTaskBox(){
     let getLoginUser =  localStorage.getItem('LoginUser');
@@ -225,7 +227,9 @@ export class HomeComponent implements OnInit {
     this.task = new tasksBox(0, "", new Date(), "", "", "", false, "");
 
     this.selectedValue = "";
+    this.sortArray();
   }
+
     editTaskBox(){
     let getLoginUser =  localStorage.getItem('LoginUser');
 
@@ -278,7 +282,7 @@ export class HomeComponent implements OnInit {
     this.openPopUp();
     this.task = task;
     this.addOrEdit = "+ Edit TO DO";
-    
+    this.selectedValue = task.status; // show selected value on click openEditPopUp
   }
 
   // convenience getter for easy access to form fields
@@ -300,6 +304,13 @@ export class HomeComponent implements OnInit {
       }
       
     }
+  }
+
+  private sortArray() {
+    this.taskArray.sort(function(a, b){
+      return (b.id - a.id); // DESC
+      // return (a.id - b.id); //ASC
+    });
   }
 
 }

@@ -23,22 +23,36 @@ export class TasksService {
       this.taskArray.push(box3);
       this.taskArray.push(box4);
     }
+
+    this.sortArray();
+    
     
     return this.taskArray;
   }
   insert(task: tasksBox) {
-    let id = this.taskArray.length+1;
-    task.id = id;
+    let index = this.taskArray.length+1;
+    task.id = index;
     this.taskArray.push(task);
+
+    this.sortArray();
   }
   delete(task: tasksBox) {
     const index: number = this.taskArray.indexOf(task);
     if (index !== -1) {
       this.taskArray.splice(index, 1);
     }
+
+    this.sortArray();
   }
   update(task: tasksBox){
     let index = this.taskArray.indexOf(task);
     this.taskArray[index] = task;
+  }
+
+  private sortArray() {
+    this.taskArray.sort(function(a, b){
+      return (b.id - a.id); // DESC
+      // return (a.id - b.id); //ASC
+    });
   }
 }
