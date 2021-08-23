@@ -83,6 +83,8 @@ export class HomeComponent implements OnInit {
       Address: ['', Validators.required],
       Description: ['', Validators.required]
     });
+
+    this.selectedValue = "";
   }
 
   @HostListener("window:resize", [])
@@ -203,11 +205,11 @@ export class HomeComponent implements OnInit {
       document.body.style.background = 'white';
       this.task= new tasksBox(0, "", new Date(), "", "", "", false, "");
     }
-
+    this.selectedValue = "";
   }
   addNewTaskBox(){
     let getLoginUser =  localStorage.getItem('LoginUser');
-
+    
     if(getLoginUser !== null){
       this.task.owner = getLoginUser;
       this.task.status = this.selectedValue;
@@ -227,7 +229,6 @@ export class HomeComponent implements OnInit {
     this.task = new tasksBox(0, "", new Date(), "", "", "", false, "");
 
     this.selectedValue = "";
-    this.sortArray();
   }
 
     editTaskBox(){
@@ -277,6 +278,7 @@ export class HomeComponent implements OnInit {
     {
       this.showTrash = false;
     }
+    this.selectedValue = "";
   }
   openEditPopUP(task: any){
     this.openPopUp();

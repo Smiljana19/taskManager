@@ -171,7 +171,7 @@
     <form class="popUpForm" *ngIf="isShown == true" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
         <div class="spaceBetweenInputs">
-            <label class="lbl">To Do name {{addOrEdit}}</label><br>
+            <label class="lbl">To Do name</label><br>
             <input [(ngModel)]="task.title" 
                 type="text" 
                 class="form-control formInput" 
@@ -180,7 +180,7 @@
                 [ngClass]="{ 'is-invalid': submitted && f.ToDoName.errors }">
 
                 <div *ngIf="submitted && f.ToDoName.errors" class="invalid-feedback">
-                    <div *ngIf="f.ToDoName.errors.required">To Do Name is required</div>
+                    <div *ngIf="f.ToDoName.errors.required" class="errorMsg">To Do Name is required</div>
                 </div>
         </div>
 
@@ -202,7 +202,7 @@
             [ngClass]="{ 'is-invalid': submitted && f.Address.errors }">
 
                 <div *ngIf="submitted && f.Address.errors" class="invalid-feedback">
-                    <div *ngIf="f.Address.errors.required">Email address is required</div>
+                    <div *ngIf="f.Address.errors.required" class="errorMsg">Email address is required</div>
                 </div>
         </div>
 
@@ -210,7 +210,7 @@
             <label class="lbl">Description</label><br>
             <textarea [(ngModel)]="task.text" class="form-control" formControlName="Description" [ngClass]="{ 'is-invalid': submitted && f.Description.errors }"></textarea>
                 <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
-                    <div *ngIf="f.Description.errors.required">Description is required</div>
+                    <div *ngIf="f.Description.errors.required" class="errorMsg">Description is required</div>
                 </div>
         </div>
         

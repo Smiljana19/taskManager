@@ -394,6 +394,14 @@
     height: 15px;
     cursor: pointer;
   }
+  .lbl{
+    position: absolute;
+    left: 1%;
+  }
+  .errorMsg{
+    position: absolute;
+    left: 1%;
+  }
 @media only screen and (max-width: 375px){
     .logUserImg{
         position: absolute;
@@ -467,5 +475,9 @@
       position: absolute;
       left: 22.5%;
      top: 85%;
+    }
+    .spaceBetweenInputs{
+      position: relative;
+      margin-top: 8%;
     }
 }
