@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   deleteIcon:string ="assets/img/deleteIcon.svg";
   settingIcon:string ="assets/img/settingIcon.svg";
   editBox:string ="assets/img/editBox.svg";
+  trashDelete:string ="assets/img/trashDelete.svg";
 
   isMobile = false;
   showHideNav = false;
@@ -41,7 +42,7 @@ export class HomeComponent implements OnInit {
   isShown: boolean = false;
 
   deleteIkon = true;
-  showX = false;
+  showTrash = false;
 
   router: any;
 
@@ -52,6 +53,8 @@ export class HomeComponent implements OnInit {
   showEditButton = false;
 
   loginUser = '';
+  
+  addOrEdit = '';
   //VARIABLES END
 
   constructor(private deviceService: DeviceDetectorService, private taskService: TasksService, private formBuilder: FormBuilder) { 
@@ -69,7 +72,7 @@ export class HomeComponent implements OnInit {
     {id: 1, name: "In progress"},
     {id: 2, name: "Completed"}
  ];
- selectedValue = '';
+ selectedValue = "";
   
 
   ngOnInit(): void {
@@ -155,7 +158,7 @@ export class HomeComponent implements OnInit {
       //   this.boxHeight;
       // }
 
-      var findTask = this.taskArray.find( x => x.id == id);
+      let findTask = this.taskArray.find( x => x.id == id);
       findTask?.showMore == true ? findTask.showMore = false : findTask!.showMore = true
 
       // if(findTask?.showMore == true) {
@@ -188,13 +191,16 @@ export class HomeComponent implements OnInit {
     else{
       document.body.style.background = 'white'
     }
-
+    this.showTrash = false;
+    this.showEditButton = false;
+    this.addOrEdit = "+ Add TO DO";
   }
   closePopUp() {
     if(this.isShown == true)
     {
       this.isShown = false;
       document.body.style.background = 'white';
+      
     }
   }
   addNewTaskBox(){
@@ -202,6 +208,7 @@ export class HomeComponent implements OnInit {
 
     if(getLoginUser !== null){
       this.task.owner = getLoginUser;
+      this.task.status = this.selectedValue;
 
       this.taskService.insert(this.task);
     }
@@ -216,15 +223,42 @@ export class HomeComponent implements OnInit {
       document.body.style.background = 'white';
     }
     this.task = new tasksBox(0, "", new Date(), "", "", "", false, "");
+
+    this.selectedValue = "";
+  }
+    editTaskBox(){
+    let getLoginUser =  localStorage.getItem('LoginUser');
+
+    if(getLoginUser !== null){
+      this.task.owner = getLoginUser;
+      if(this.selectedValue!='') {
+        this.task.status = this.selectedValue;
+      }
+      
+
+      this.taskService.update(this.task);
+    }
+    else {
+      this.router.navigate(['/'])
+      //redirektuj na login jer je korisnik prestao da vazi
+    }
+
+    if(this.isShown == true)
+    {
+      this.isShown = false;
+      document.body.style.background = 'white';
+    }
+    this.task = new tasksBox(0, "", new Date(), "", "", "", false, "");
+
+    this.selectedValue = "";
   }
   deleteIconNav(){
     if(this.deleteIkon == true){
-      if(this.showX == false){
-        this.showX = true;
-      }
-      else{
-        this.showX = false;
-      }
+      this.showTrash == false? this.showTrash = true : this.showTrash = false
+    }
+    if(this.showTrash == true)
+    {
+      this.showEditButton = false;
     }
   }
   deleteBox(task: any){
@@ -233,8 +267,18 @@ export class HomeComponent implements OnInit {
   }
   editTaskIcon(){
     if(this.editIkon == true){
-      this.showEditButton == false? this.showEditButton = true : this.showEditButton = false
+      this.showEditButton == false? this.showEditButton = true : this.showEditButton = false;
     }
+    if(this.showEditButton == true)
+    {
+      this.showTrash = false;
+    }
+  }
+  openEditPopUP(task: any){
+    this.openPopUp();
+    this.task = task;
+    this.addOrEdit = "+ Edit TO DO";
+    
   }
 
   // convenience getter for easy access to form fields
@@ -248,14 +292,14 @@ export class HomeComponent implements OnInit {
         return;
     }
     else{
-      this.addNewTaskBox();
+      if(this.task.id == 0){
+        this.addNewTaskBox();
+      }
+      else{
+        this.editTaskBox();
+      }
+      
     }
-  }
-  showEditInBox(){
-    
-  }
-  updateBox(){
-
   }
 
 }

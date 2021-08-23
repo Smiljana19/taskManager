@@ -39,7 +39,6 @@ export class TasksService {
   }
   update(task: tasksBox){
     let index = this.taskArray.indexOf(task);
-    task.id = index;
     this.taskArray[index] = task;
   }
 }

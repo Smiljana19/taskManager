@@ -37,6 +37,7 @@
     color: #fff;
     font-weight: bold;
     font-size: 18px;
+    text-transform: uppercase;
 }
 .navTitle{
     font-weight: bold;
@@ -387,10 +388,11 @@
   }
   .btnDeleteInfoBox{
     position: absolute;
-    right: 0;
-    border: none;
-    color: red;
-    background: none;
+    top: 10%;
+    right: 1%;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
   }
 @media only screen and (max-width: 375px){
     .logUserImg{

@@ -113,7 +113,7 @@
         <span *ngFor="let x of taskArray">
     
             <div class="infoBox" *ngIf="x.showMore == false">
-                <button type="button" class="btnDeleteInfoBox" *ngIf="showX == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" (click)='deleteBox(x)' data-toggle="tooltip" title="Delete task">X</button>
+                <img [src] = trashDelete class="btnDeleteInfoBox" *ngIf="showTrash == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" (click)='deleteBox(x)' data-toggle="tooltip" title="Delete task">
 
                     <div class="logUserInfoBox">
                         <span class="userInfoBox">{{x.owner[0]}}{{x.owner[1]}}</span>
@@ -130,14 +130,14 @@
                         <div class="logUserBigInfoBox">
                             <p class="textlogUserBigInfoBox">{{x.user[0]}}{{x.user[1]}}</p>
                         </div>
-                        <img [src] = editBox class="editBox" *ngIf="showEditButton == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()">
+                        <img [src] = editBox class="editBox" *ngIf="showEditButton == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" (click)="openEditPopUP(x)" data-toggle="tooltip" title="Edit task">
                 </div>
             <!--End infoBox-->
     
     
     
-            <div class="infoBox" *ngIf="x.showMore == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" [style.height.px]="showMoreBoxHeight" >
-                <button type="button" class="btnDeleteInfoBox" *ngIf="showX == true" (click)="deleteBox(x)" data-toggle="tooltip" title="Delete task">X</button>
+            <div class="infoBox" *ngIf="x.showMore == true" [style.height.px]="showMoreBoxHeight" >
+                <img [src] = trashDelete class="btnDeleteInfoBox" *ngIf="showTrash == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" (click)='deleteBox(x)' data-toggle="tooltip" title="Delete task">
                 <div class="logUserInfoBoxBig">
                     <span class="userInfoBox">{{x.owner[0]}}{{x.owner[1]}}</span>
                 </div>
@@ -156,8 +156,8 @@
         
                     <p class="textInBox">{{x.text}}</p>
 
-                    <img [src] = editBox class="editBox" *ngIf="showEditButton == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()">
-            </div>
+                    <img [src] = editBox class="editBox" *ngIf="showEditButton == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" (click)="openEditPopUP(x)" data-toggle="tooltip" title="Edit task">
+                </div>
         </span>
         <!--End infoBox-->
     
@@ -171,7 +171,7 @@
     <form class="popUpForm" *ngIf="isShown == true" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
         <div class="spaceBetweenInputs">
-            <label class="lbl">To Do name</label><br>
+            <label class="lbl">To Do name {{addOrEdit}}</label><br>
             <input [(ngModel)]="task.title" 
                 type="text" 
                 class="form-control formInput" 
@@ -185,9 +185,10 @@
         </div>
 
         <div class="spaceBetweenInputs">
-            <label class="lbl">TO DO status</label><br>
+            <label class="lbl">TO DO status {{selectedValue}} {{task.status}}</label><br>
                 <select class="form-select" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
-                    <option value="" disabled selected>Pick a status</option>
+                    <option *ngIf="task.status==''" value="" disabled>Pick a status</option>
+                    <option *ngIf="task.status!==''" value="task.status" disabled>{{task.status}}</option>
                     <option *ngFor="let x of status" [ngValue]="x.name">{{x.name}}</option>
                 </select>
         </div>
@@ -214,7 +215,7 @@
                 </div>
         </div>
         
-        <input type="submit" value="+ Add TO DO" class="btn">
+        <input type="submit" value="{{addOrEdit}}" class="btn">
         <!-- <button class="btn" (click)="addNewTaskBox()">+ Add TO DO</button> -->
         <button type="button" class="btnClosePopUp" (click)="closePopUp()">X</button>
         
