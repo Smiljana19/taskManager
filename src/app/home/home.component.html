@@ -100,8 +100,8 @@
       
             <span class="toDoInputs">
               <label>TO DO status</label>
-              <select class="toDoSelect form-control" [(ngModel)]="search">
-                    <option value="" disabled selected aria-placeholder="Pick a status">Pick a status</option>
+              <select class="toDoSelect form-control" [(ngModel)]="search" >
+                    <option disabled selected>{{pickStatus}}</option>
                     <option *ngFor="let x of status" [ngValue]="x.name">{{x.name}}</option>
               </select>
               
@@ -190,7 +190,7 @@
 
         <div class="spaceBetweenInputs">
             <label class="lbl">TO DO status</label><br>
-                <select class="form-select" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
+                <select class="form-select toDoSelect" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
                     <option value="" disabled>Pick a status</option>
                     <option *ngFor="let x of status" [ngValue]="x.name">{{x.name}}</option>
                 </select>

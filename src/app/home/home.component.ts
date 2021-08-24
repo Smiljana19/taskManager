@@ -57,8 +57,7 @@ export class HomeComponent implements OnInit {
   
   addOrEdit = '';
 
-  searchByStatus = false;
-  searchByTitle = false;
+  pickStatus = "Pick a Status";
   //VARIABLES END
 
   constructor(private deviceService: DeviceDetectorService, private taskService: TasksService, private formBuilder: FormBuilder) { 
@@ -88,7 +87,7 @@ export class HomeComponent implements OnInit {
       Description: ['', Validators.required]
     });
 
-    this.selectedValue = "";
+    this.selectedValue = this.pickStatus;
   }
 
   @HostListener("window:resize", [])
