@@ -85,7 +85,7 @@
         <div class="container">
             <span class="toDoInputs">
               <label>TO DO search</label>
-              <input type="text" class="form-control" placeholder="Type something">
+              <input type="text" class="form-control" placeholder="Type something" [(ngModel)]="search">
             </span>
       
             <span class="toDoInputs">
@@ -100,8 +100,8 @@
       
             <span class="toDoInputs">
               <label>TO DO status</label>
-              <select class="toDoSelect form-control" [(ngModel)]="selectedValue">
-                    <option value="" disabled selected>Pick a status</option>
+              <select class="toDoSelect form-control" [(ngModel)]="search">
+                    <option value="" disabled selected aria-placeholder="Pick a status">Pick a status</option>
                     <option *ngFor="let x of status" [ngValue]="x.name">{{x.name}}</option>
               </select>
               
@@ -110,10 +110,11 @@
     
     
         <!--infoBox-->
-        <span *ngFor="let x of taskArray">
+        <span *ngFor="let x of taskArray | filter:search">
     
             <div class="infoBox" *ngIf="x.showMore == false">
-                <img [src] = trashDelete class="btnDeleteInfoBox" *ngIf="showTrash == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" (click)='deleteBox(x)' data-toggle="tooltip" title="Delete task">
+                <img [src] = trashDelete class="btnDeleteInfoBox" *ngIf="showTrash == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" 
+                (click)='deleteBox(x)' data-toggle="tooltip" title="Delete task">
 
                     <div class="logUserInfoBox">
                         <span class="userInfoBox">{{x.owner[0]}}{{x.owner[1]}}</span>
@@ -130,14 +131,16 @@
                         <div class="logUserBigInfoBox">
                             <p class="textlogUserBigInfoBox">{{x.user[0]}}{{x.user[1]}}</p>
                         </div>
-                        <img [src] = editBox class="editBox" *ngIf="showEditButton == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" (click)="openEditPopUP(x)" data-toggle="tooltip" title="Edit task">
+                        <img [src] = editBox class="editBox" *ngIf="showEditButton == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" 
+                        (click)="openEditPopUP(x)" data-toggle="tooltip" title="Edit task">
                 </div>
             <!--End infoBox-->
     
     
     
             <div class="infoBox" *ngIf="x.showMore == true" [style.height.px]="showMoreBoxHeight" >
-                <img [src] = trashDelete class="btnDeleteInfoBox" *ngIf="showTrash == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" (click)='deleteBox(x)' data-toggle="tooltip" title="Delete task">
+                <img [src] = trashDelete class="btnDeleteInfoBox" *ngIf="showTrash == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" 
+                (click)='deleteBox(x)' data-toggle="tooltip" title="Delete task">
                 <div class="logUserInfoBoxBig">
                     <span class="userInfoBox">{{x.owner[0]}}{{x.owner[1]}}</span>
                 </div>
@@ -156,7 +159,8 @@
         
                     <p class="textInBox">{{x.text}}</p>
 
-                    <img [src] = editBox class="editBox" *ngIf="showEditButton == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" (click)="openEditPopUP(x)" data-toggle="tooltip" title="Edit task">
+                    <img [src] = editBox class="editBox" *ngIf="showEditButton == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" 
+                    (click)="openEditPopUP(x)" data-toggle="tooltip" title="Edit task">
                 </div>
         </span>
         <!--End infoBox-->

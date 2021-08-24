@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { SiginupComponent } from './siginup/siginup.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { HomeComponent } from './home/home.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { FormsModule } from '@angular/forms';
 
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    Ng2SearchPipeModule,
     FormsModule
   ],
   providers: [],

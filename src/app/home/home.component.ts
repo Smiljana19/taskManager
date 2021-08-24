@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
 
   taskArray: tasksBox[] = [];
   task: tasksBox = new tasksBox(0, "", new Date(), "", "", "", false, "");
+  search!: string;
 
   isShown: boolean = false;
 
@@ -55,6 +56,9 @@ export class HomeComponent implements OnInit {
   loginUser = '';
   
   addOrEdit = '';
+
+  searchByStatus = false;
+  searchByTitle = false;
   //VARIABLES END
 
   constructor(private deviceService: DeviceDetectorService, private taskService: TasksService, private formBuilder: FormBuilder) { 
