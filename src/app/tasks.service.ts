@@ -8,16 +8,24 @@ import { tasksBox } from '../Model/tasksBox';
 export class TasksService {
 
   taskArray: tasksBox[] = [];
+  idAutoIncrement = 0;
 
   constructor() { }
 
   get(){
-    const box = new tasksBox(1, 'Create UX design', new Date() ,'In progress','admin','admin', false, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
-    const box2 = new tasksBox(2, 'Create HTML layout', new Date() ,'Completed','admin','admin', false , 'Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
-    const box3 = new tasksBox(3, 'Create UX design', new Date() ,'In progress','Amel','Amel', false, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
-    const box4 = new tasksBox(4, 'Create HTML layout', new Date() ,'Completed','Smiljana','Smiljana', false , 'Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
+    
 
-    if(this.taskArray.length==0){
+    if(this.taskArray.length == 0){
+
+      this.idAutoIncrement+=1;
+      const box = new tasksBox(this.idAutoIncrement, 'Create UX design', new Date() ,'In progress','admin','admin', false, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
+      this.idAutoIncrement+=1;
+      const box2 = new tasksBox(this.idAutoIncrement, 'Create HTML layout', new Date() ,'Completed','admin','admin', false , 'Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
+      this.idAutoIncrement+=1;
+      const box3 = new tasksBox(this.idAutoIncrement, 'Create UX design', new Date() ,'In progress','Amel','Amel', false, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
+      this.idAutoIncrement+=1;
+      const box4 = new tasksBox(this.idAutoIncrement, 'Create HTML layout', new Date() ,'Completed','Smiljana','Smiljana', false , 'Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
+
       this.taskArray.push(box);
       this.taskArray.push(box2);
       this.taskArray.push(box3);
@@ -30,8 +38,8 @@ export class TasksService {
     return this.taskArray;
   }
   insert(task: tasksBox) {
-    let index = this.taskArray.length+1;
-    task.id = index;
+    this.idAutoIncrement+=1;
+    task.id = this.idAutoIncrement;
     this.taskArray.push(task);
 
     this.sortArray();

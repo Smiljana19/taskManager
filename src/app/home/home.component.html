@@ -100,7 +100,7 @@
       
             <span class="toDoInputs">
               <label>TO DO status</label>
-              <select class="toDoSelect form-control" [(ngModel)]="search" >
+              <select class="toDoSelect form-control" [(ngModel)]="search" [(ngModel)]="selectedValue">
                     <option disabled selected>{{pickStatus}}</option>
                     <option *ngFor="let x of status" [ngValue]="x.name">{{x.name}}</option>
               </select>
@@ -119,12 +119,12 @@
                     <div class="logUserInfoBox">
                         <span class="userInfoBox">{{x.owner[0]}}{{x.owner[1]}}</span>
                     </div>
-    
+                    
                     <p class="titleInfoBox">{{x.title}}</p>
     
                     <p class="dateInfoBox">Created on: {{x.date | date:'shortDate'}}</p>
     
-                    <p class="progressInfoBox">{{x.status}}</p>
+                    <p class="statusInfoBox">{{x.status}}</p>
     
                         <a href="javascript:void(0)" class="dots" (click)="showMore(x.id)">...</a>
     
@@ -149,7 +149,7 @@
         
                 <p class="dateInfoBox">Created on: {{x.date | date:'shortDate'}}</p>
         
-                <p class="progressInfoBox">{{x.status}}</p>
+                <p class="statusInfoBox">{{x.status}}</p>
         
                     <a href="javascript:void(0)" class="dots" (click)="showMore(x.id)">...</a>
         
@@ -180,6 +180,7 @@
                 type="text" 
                 class="form-control formInput" 
                 placeholder="Type a TO DO name" 
+                maxlength="20"
                 formControlName="ToDoName" 
                 [ngClass]="{ 'is-invalid': submitted && f.ToDoName.errors }">
 
@@ -191,7 +192,7 @@
         <div class="spaceBetweenInputs">
             <label class="lbl">TO DO status</label><br>
                 <select class="form-select toDoSelect" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
-                    <option value="" disabled>Pick a status</option>
+                    <option value="" disabled>{{pickStatus}}</option>
                     <option *ngFor="let x of status" [ngValue]="x.name">{{x.name}}</option>
                 </select>
         </div>
@@ -202,24 +203,28 @@
             type="text" 
             class="form-control formInput" 
             placeholder="Enter name or email address"
+            maxlength="20"
             formControlName="Address" 
             [ngClass]="{ 'is-invalid': submitted && f.Address.errors }">
 
                 <div *ngIf="submitted && f.Address.errors" class="invalid-feedback">
                     <div *ngIf="f.Address.errors.required" class="errorMsg">Email address is required</div>
                 </div>
-        </div>
+        </div><br>
 
         <div class="spaceBetweenInputs">
             <label class="lbl">Description</label><br>
-            <textarea [(ngModel)]="task.text" class="form-control" formControlName="Description" [ngClass]="{ 'is-invalid': submitted && f.Description.errors }"></textarea>
+            <textarea [(ngModel)]="task.text" 
+            class="form-control" 
+            formControlName="Description" 
+            maxlength="150"
+            [ngClass]="{ 'is-invalid': submitted && f.Description.errors }"></textarea>
                 <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
                     <div *ngIf="f.Description.errors.required" class="errorMsg">Description is required</div>
                 </div>
         </div>
         
         <input type="submit" value="{{addOrEdit}}" class="btn">
-        <!-- <button class="btn" (click)="addNewTaskBox()">+ Add TO DO</button> -->
         <button type="button" class="btnClosePopUp" (click)="closePopUp()">X</button>
         
     </form>

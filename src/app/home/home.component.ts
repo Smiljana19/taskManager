@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   settingIcon:string ="assets/img/settingIcon.svg";
   editBox:string ="assets/img/editBox.svg";
   trashDelete:string ="assets/img/trashDelete.svg";
+  twoArrows:string ="assets/img/twoArrows.svg";
 
   isMobile = false;
   showHideNav = false;
@@ -200,6 +201,7 @@ export class HomeComponent implements OnInit {
     this.showEditButton = false;
     this.addOrEdit = "+ Add TO DO";
     this.selectedValue = "";
+    this.onReset();
   }
   closePopUp() {
     if(this.isShown == true)
@@ -281,7 +283,7 @@ export class HomeComponent implements OnInit {
     {
       this.showTrash = false;
     }
-    this.selectedValue = "";
+    this.selectedValue = this.pickStatus;
   }
   openEditPopUP(task: any){
     this.openPopUp();
@@ -310,12 +312,9 @@ export class HomeComponent implements OnInit {
       
     }
   }
-
-  private sortArray() {
-    this.taskArray.sort(function(a, b){
-      return (b.id - a.id); // DESC
-      // return (a.id - b.id); //ASC
-    });
-  }
+  onReset() {
+    this.submitted = false;
+    this.registerForm.reset();
+}
 
 }

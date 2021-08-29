@@ -213,14 +213,6 @@
     transform-origin: 0 0;
     transition: transform .5s ease;
   }
-  #infoBoxChange{
-    position: relative;
-    margin: 5% 3%;
-    width: 595px;
-    height: 188px;
-    background-color: #F3F6F9;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  }
   .logUserInfoBox{
     position: absolute;
     top: -21%;
@@ -263,7 +255,7 @@
     padding-top: 10%;
     color: #9B9BA4;
   }
-  .progressInfoBox{
+  .statusInfoBox{
     font-weight: bold;
     position: absolute;
     left: 50%;
@@ -345,6 +337,7 @@
     border-radius: 5px;
     background: #0DB2F2;
     color: #fff;
+    font-weight: bold;
   }
   .spaceBetweenInputs{
     position: relative;
@@ -381,6 +374,7 @@
     top: 90%;
     left: 34%;
     color: #fff;
+    font-weight: bold;
     background: #0DB2F2;
     border-radius: 30px;
     width: 177px;
@@ -408,8 +402,8 @@
       linear-gradient(135deg, gray 50%, transparent 50%),
       linear-gradient(to right, #ccc, #ccc);
     background-position:
-      calc(100% - 20px) calc(1.2em + 2px),
-      calc(100% - 15px) calc(1.2em + 2px);
+      calc(100% - 20px) calc(1.2em + 1px),
+      calc(100% - 15px) calc(1.2em + 1px);
     background-size:
       5px 5px,
       5px 5px,
@@ -433,7 +427,7 @@
     background-repeat: no-repeat;
     border-color: green;
     outline: 0;
-  }
+  } 
 
 @media only screen and (max-width: 375px){
     .logUserImg{
@@ -456,7 +450,6 @@
     .container{
       position: absolute;
       left: 0;
-
     }
     .infoBox{
       position: relative;
@@ -465,28 +458,32 @@
       height: 100px;
       width: 90%;
     }
+    .infoBox:hover {
+      transform: scale(1); 
+      transition: transform .5s ease;
+    }
     .logUserBigInfoBox{
       display: none;
     }
-    .progressInfoBox{
+    .statusInfoBox{
       position: absolute;
       top: 30%;
       left: 44%;
     }
     .dots{
       position: absolute;
-      top: 35%;
+      top: 27%;
       left: 47%;
     }
     .titleInfoBox{
       position: absolute;
       top: -5%;
-      left: 30%;
+      left: 27%;
     }
     .dateInfoBox{
       position: absolute;
       top: 4%;
-      left: 33%;
+      left: 35%;
     }
     .popUpForm{
       width:  90%;
