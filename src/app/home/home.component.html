@@ -1,4 +1,4 @@
-    <div [ngClass]="isShown==false? 'container-fluid': 'container-fluidWithOpacity'" ><!--Navigation-->
+    <div [ngClass]="isShown==false? 'container-fluid' : 'container-fluidWithOpacity'" ><!--Navigation-->
 
         <a href="javascript:void(0)" class="openClosebtnOnMobile" (click)="openClosebtnOnMobile()" *ngIf="isMobile == true">
                 <div  class="hrMobile"></div>
@@ -85,22 +85,23 @@
         <div class="container">
             <span class="toDoInputs">
               <label>TO DO search</label>
-              <input type="text" class="form-control" placeholder="Type something" [(ngModel)]="search">
+              <!-- <input type="text" class="form-control" placeholder="Type something" [(ngModel)]="search"> -->
+              <input type="text" class="form-control" placeholder="Type something" [(ngModel)]="searchTitle" (change)="SearchByTitle()">
             </span>
       
             <span class="toDoInputs">
               <label>TO DO date from</label>
-              <input type="date" class="form-control" placeholder="Pick a date">
+              <input type="date" class="form-control" placeholder="Pick a date" [(ngModel)]="searchDate" >
             </span>
       
             <span class="toDoInputs">
               <label>TO DO date to</label>
-              <input type="date" class="form-control" placeholder="Pick a date">
+              <input type="date" class="form-control" placeholder="Pick a date" >
             </span>
       
             <span class="toDoInputs">
               <label>TO DO status</label>
-              <select class="toDoSelect form-control" [(ngModel)]="search" [(ngModel)]="selectedValue">
+              <select class="toDoSelect form-control arrows" [(ngModel)]="selectedValue" (change)="SearchByStatus()">
                     <option disabled selected>{{pickStatus}}</option>
                     <option *ngFor="let x of status" [ngValue]="x.name">{{x.name}}</option>
               </select>
@@ -110,7 +111,7 @@
     
     
         <!--infoBox-->
-        <span *ngFor="let x of taskArray | filter:search">
+        <span *ngFor="let x of taskArray">
     
             <div class="infoBox" *ngIf="x.showMore == false">
                 <img [src] = trashDelete class="btnDeleteInfoBox" *ngIf="showTrash == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" 
@@ -191,7 +192,7 @@
 
         <div class="spaceBetweenInputs">
             <label class="lbl">TO DO status</label><br>
-                <select class="form-select toDoSelect" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
+                <select class="form-select toDoSelect arrows" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
                     <option value="" disabled>{{pickStatus}}</option>
                     <option *ngFor="let x of status" [ngValue]="x.name">{{x.name}}</option>
                 </select>
@@ -217,8 +218,8 @@
             <textarea [(ngModel)]="task.text" 
             class="form-control" 
             formControlName="Description" 
-            maxlength="150"
             [ngClass]="{ 'is-invalid': submitted && f.Description.errors }"></textarea>
+
                 <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
                     <div *ngIf="f.Description.errors.required" class="errorMsg">Description is required</div>
                 </div>

@@ -3,6 +3,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { tasksBox } from '../../Model/tasksBox';
 import { TasksService } from '../tasks.service'
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common'
 
 
 
@@ -14,16 +15,17 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 export class HomeComponent implements OnInit {
 
   //VARIABLES START
-  UsrHead:string ="assets/img/UsrHead.svg";
-  UsrBody:string ="assets/img/UsrBody.svg";
-  vector:string ="assets/img/vector.svg";
-  addIcon:string ="assets/img/addIcon.svg";
-  editIcon:string ="assets/img/editIcon.svg";
-  deleteIcon:string ="assets/img/deleteIcon.svg";
-  settingIcon:string ="assets/img/settingIcon.svg";
-  editBox:string ="assets/img/editBox.svg";
-  trashDelete:string ="assets/img/trashDelete.svg";
-  twoArrows:string ="assets/img/twoArrows.svg";
+  UsrHead:string = "assets/img/UsrHead.svg";
+  UsrBody:string = "assets/img/UsrBody.svg";
+  vector:string = "assets/img/vector.svg";
+  addIcon:string = "assets/img/addIcon.svg";
+  editIcon:string = "assets/img/editIcon.svg";
+  deleteIcon:string = "assets/img/deleteIcon.svg";
+  settingIcon:string = "assets/img/settingIcon.svg";
+  editBox:string = "assets/img/editBox.svg";
+  trashDelete:string = "assets/img/trashDelete.svg";
+  arrowUP:string = "assets/img/arrowUP.svg";
+  downArrows:string = "assets/img/downArrows.svg";
 
   isMobile = false;
   showHideNav = false;
@@ -39,7 +41,6 @@ export class HomeComponent implements OnInit {
 
   taskArray: tasksBox[] = [];
   task: tasksBox = new tasksBox(0, "", new Date(), "", "", "", false, "");
-  search!: string;
 
   isShown: boolean = false;
 
@@ -59,9 +60,13 @@ export class HomeComponent implements OnInit {
   addOrEdit = '';
 
   pickStatus = "Pick a Status";
+
+  searchTitle = "";
+  searchDate: Date;
+
   //VARIABLES END
 
-  constructor(private deviceService: DeviceDetectorService, private taskService: TasksService, private formBuilder: FormBuilder) { 
+  constructor(private deviceService: DeviceDetectorService, private taskService: TasksService, private formBuilder: FormBuilder, public datepipe: DatePipe) { 
     this.isMobile = this.deviceService.isMobile();
 
     this.taskArray = taskService.get();
@@ -70,6 +75,8 @@ export class HomeComponent implements OnInit {
     if(getLoginUser !== null){
       this.loginUser = getLoginUser;
     }
+
+    this.searchDate = new Date();
   }
 
   status = [
@@ -77,7 +84,6 @@ export class HomeComponent implements OnInit {
     {id: 2, name: "Completed"}
  ];
  selectedValue = "";
-  
 
   ngOnInit(): void {
     this.innerWidth = window.innerWidth;
@@ -87,8 +93,7 @@ export class HomeComponent implements OnInit {
       Address: ['', Validators.required],
       Description: ['', Validators.required]
     });
-
-    this.selectedValue = this.pickStatus;
+    this.showPickaStatus();
   }
 
   @HostListener("window:resize", [])
@@ -210,7 +215,7 @@ export class HomeComponent implements OnInit {
       document.body.style.background = 'white';
       this.task= new tasksBox(0, "", new Date(), "", "", "", false, "");
     }
-    this.selectedValue = "";
+    this.showPickaStatus();
   }
   addNewTaskBox(){
     let getLoginUser =  localStorage.getItem('LoginUser');
@@ -244,13 +249,10 @@ export class HomeComponent implements OnInit {
       if(this.selectedValue!='') {
         this.task.status = this.selectedValue;
       }
-      
-
       this.taskService.update(this.task);
     }
     else {
       this.router.navigate(['/'])
-      //redirektuj na login jer je korisnik prestao da vazi
     }
 
     if(this.isShown == true)
@@ -283,7 +285,7 @@ export class HomeComponent implements OnInit {
     {
       this.showTrash = false;
     }
-    this.selectedValue = this.pickStatus;
+    this.showPickaStatus();
   }
   openEditPopUP(task: any){
     this.openPopUp();
@@ -309,12 +311,62 @@ export class HomeComponent implements OnInit {
       else{
         this.editTaskBox();
       }
-      
     }
+    this.showPickaStatus();
   }
   onReset() {
     this.submitted = false;
     this.registerForm.reset();
-}
+  }
+  showPickaStatus(){
+    this.selectedValue = this.pickStatus;
+  }
 
+  SearchByTitle() {
+    if (this.searchTitle == "") {
+      this.taskArray = this.taskService.get();
+    } else {
+      this.taskArray = this.taskService.get().filter( x => x.title.includes(this.searchTitle));
+    }
+  }
+
+  SearchByStatus() {
+    if (this.selectedValue == "") {
+      this.taskArray = this.taskService.get();
+    } else {
+      this.taskArray = this.taskService.get().filter( x => x.status.includes(this.selectedValue));
+    }
+  }
+  // SearchByDateFrom(){
+
+  //   var x =new Date(this.searchDate);
+  //   let latest_date = this.datepipe.transform(x, 'yyyy-MM-dd');
+
+  //   this.taskArray.forEach(element => {
+
+      
+  //     console.log("aaa");
+  //     console.log(latest_date);
+      
+  //     let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(element.date);
+  //     let mo = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(element.date);
+  //     let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(element.date);
+  //     console.log(ye+'-'+mo+'-'+da)
+  //     console.log(element.date)
+
+  //     if (element.date == this.searchDate) {
+  //       console.log("DA");
+  //     }
+  //     else{
+  //       console.log("NE");
+  //     }
+  //   });
+
+  //   var x =new Date(this.searchDate);
+  //   let latest_date =this.datepipe.transform(x, 'yyyy-MM-dd');
+
+  //   this.taskArray = this.taskService.get().filter( x => x.date >= latest_date);
+  //   console.log(this.taskArray);
+  // }
+  
 }

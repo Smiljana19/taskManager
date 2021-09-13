@@ -1,38 +1,94 @@
 <div class="container">
-    <div class="SiginPosition">
-        <p class="SigTitile">Sigin Up</p>
+    <form class="SiginPosition" [formGroup]="siginUpForm" (ngSubmit)="onSubmit()">
+        
+          <p class="SigTitile">Sign Up</p>
 
-        <div class="spaceRows">
-            <label class="formatLblTxt">First Name</label><br>
-            <input type="text"  class="form-control" placeholder="Type your First Name">
-        </div>
-        <div class="spaceRows">
-            <label class="formatLblTxt">Last Name</label><br>
-            <input type="text" class="form-control" placeholder="Type your Last Name">
-        </div>
-        <div class="spaceRows">
-            <label class="formatLblTxt">E-mail</label><br>
-            <input type="text" class="form-control" placeholder="Type your E-mail">
-        </div>
-        <div class="spaceRows">
-            <label class="formatLblTxt">Password</label><br>
-            <input type="text" class="form-control" placeholder="Type your Password">
-        </div>
-        <div class="spaceRows">
-            <label class="formatLblTxt">Confirm Password</label><br>
-            <input type="text" class="form-control" placeholder="Type your Password">
-        </div>
+            <div class="form-group">
 
-        <button class="btn">SIGN UP</button><br>
-
-        <a routerLink="/" class="loginLink">LOGIN</a>
-
-        <p class="OrSignUpUsing">Or Sign Up Using</p>
-
-        <img [src] = fb class="icons">
-        <img [src] = in class="icons">
-        <img [src] = google class="icons">
-    </div>
+                <div class="spaceRows">
+                    <label class="formatLblTxt">First Name</label><br>
+                    <input [(ngModel)]="user.firstName" 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Type your First Name" 
+                    maxlength="20"
+                    formControlName="firstName" 
+                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                            <div *ngIf="f.firstName.errors.required" class="errorMsg">First Name is required</div>
+                        </div>
+                </div>
+                <div class="spaceRows">
+                    <label class="formatLblTxt">Last Name</label><br>
+                    <input [(ngModel)]="user.lastName" 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Type your Last Name" 
+                    maxlength="20"
+                    formControlName="lastName" 
+                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                            <div *ngIf="f.lastName.errors.required" class="errorMsg">First Name is required</div>
+                        </div>
+                </div>
+                <div class="spaceRows">
+                    <label class="formatLblTxt">E-mail</label><br>
+                    <input [(ngModel)]="user.email" 
+                    type="email" 
+                    pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                    class="form-control" 
+                    placeholder="Type your e-mail" 
+                    formControlName="email" 
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required" class="errorMsg">E-mail is required</div>
+                            <div *ngIf="f.email.errors" class="errorMsgEmail">Email must be a valid email address</div>
+                        </div>
+                </div>
+                <div class="spaceRows">
+                    <label class="formatLblTxt">Password</label><br>
+                    <input [(ngModel)]="user.password" 
+                    type="password" 
+                    class="form-control" 
+                    placeholder="Type your password" 
+                    maxlength="20"
+                    formControlName="password" 
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required" class="errorMsg">Password is required</div>
+                        </div>
+                </div>
+                <div class="spaceRows">
+                    <label class="formatLblTxt">Confirm Password</label><br>
+                    <input [(ngModel)]="user.confirmPassword" 
+                    type="password" 
+                    class="form-control" 
+                    placeholder="Type your Confirm Password" 
+                    maxlength="20"
+                    formControlName="confirmPassword" 
+                    [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+                        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                            <div *ngIf="f.confirmPassword.errors.required" class="errorMsg">Confirm Password is required</div>
+                        </div>
+                </div>
+    
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block">SIGN UP</button><br>
+                    <span class="infoMSgGreen" *ngIf="infoMessage == 'Success sign up'">{{infoMessage}}</span>
+                    <span class="infoMSgRed" *ngIf="infoMessage !== 'Success sign up'">{{infoMessage}}</span>
+                </div>
+                
+    
+                <a routerLink="/" class="loginLink">LOGIN</a>
+    
+                <p class="OrSignUpUsing">Or Sign Up Using</p>
+    
+                <img [src] = fb class="icons">
+                <img [src] = in class="icons">
+                <img [src] = google class="icons">
+            </div>
+            
+    </form>
     
 </div>
 <div class="container-fluid">

@@ -12,6 +12,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { FormsModule } from '@angular/forms';
 
+import { DatePipe } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,9 @@ import { FormsModule } from '@angular/forms';
     Ng2SearchPipeModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

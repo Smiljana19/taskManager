@@ -163,7 +163,29 @@ input{
       margin: 0;
     }
   }
-  @media only screen and (max-width: 1024px) {
+  .errorMsg{
+    position: absolute;
+    right: 39%;
+  }
+  .infoMSgGreen{
+    position: absolute;
+    color: #04cf3d;
+    font-weight: bold;
+    top: 75%;
+    right: 47%;
+  }
+  .infoMSgRed{
+    position: absolute;
+    color: red;
+    font-weight: bold;
+    top: 75%;
+    right: 35%;
+  }
+  .errorMsgEmail{
+    position: absolute;
+    right: 39%;
+  }
+  @media only screen and (max-width: 375px) {
     .SigTitile{
       margin-top: 20%;
     }
@@ -182,5 +204,23 @@ input{
     }
     .SiginPosition {
       text-align: center;
+    }
+    .errorMsg{
+      position: absolute;
+      right: 5%;
+    }
+    .infoMSgGreen{
+      position: absolute;
+      top: 86.5%;
+      right: 35%;
+    }
+    .infoMSgRed{
+      position: relative;
+      top: 75%;
+      right: 0%;
+    }
+    .errorMsgEmail{
+      position: absolute;
+      right: 5%;
     }
   }
