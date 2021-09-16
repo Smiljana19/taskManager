@@ -177,7 +177,10 @@
 
     <!--infoBox-->
     <span *ngFor="let x of taskArray">
-      <div class="infoBox" *ngIf="x.showMore == false">
+      <div
+        [ngClass]="darkThemes == true ? 'infoBoxDarkThemes' : 'infoBox'"
+        *ngIf="x.showMore == false"
+      >
         <img
           [src]="trashDelete"
           class="btnDeleteInfoBox"
@@ -224,7 +227,7 @@
       <!--End infoBox-->
 
       <div
-        class="infoBox"
+        [ngClass]="darkThemes == true ? 'infoBoxDarkThemes' : 'infoBox'"
         *ngIf="x.showMore == true"
         [style.height.px]="showMoreBoxHeight"
       >
