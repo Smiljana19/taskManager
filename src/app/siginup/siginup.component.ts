@@ -33,7 +33,7 @@ export class SiginupComponent implements OnInit {
     this.siginUpForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
     });

@@ -1,491 +1,556 @@
-.container-fluid{
-    width: 100%;
-    height: 123px;
-    background-color: #F3F6F9;
-}
-.container-fluidWithOpacity{
+.container-fluid {
   width: 100%;
   height: 123px;
-  background-color: #0DB2F24D;
+  background-color: #f3f6f9;
+}
+.container-fluidWithOpacity {
+  width: 100%;
+  height: 123px;
+  background-color: #0db2f24d;
   opacity: 0.4;
 }
-.UsrHead{
-    margin-left: 55%;
-    position: relative;
+.container-fluidDark {
+  width: 100%;
+  height: 123px;
+  background-color: rgb(105, 105, 105);
 }
-.UsrBody{
-    position: absolute;
+.UsrHead {
+  margin-left: 55%;
+  position: relative;
 }
-.logUserImg{
-    position: absolute;
-    right: 4%;
-    top: 3.5%;
+.UsrBody {
+  position: absolute;
 }
-.curentUserLoged{
-    width: 56px;
-    height: 56px;
-    background-color: #005B96;
-    border-radius: 50px;
-    position: absolute;
-    right: 7%;
-    top: 3%;
+.logUserImg {
+  position: absolute;
+  right: 4%;
+  top: 3.5%;
 }
-.curentUser{
-    text-align: center;
-    position: relative;
-    top: 25%;
-    color: #fff;
-    font-weight: bold;
-    font-size: 18px;
-    text-transform: uppercase;
+.curentUserLoged {
+  width: 56px;
+  height: 56px;
+  background-color: #005b96;
+  border-radius: 50px;
+  position: absolute;
+  right: 7%;
+  top: 3%;
 }
-.navTitle{
-    font-weight: bold;
-    font-size: 24px;
-    color: #9B9BA4;
-    position: absolute;
-    top: 3%;
+.curentUser {
+  text-align: center;
+  position: relative;
+  top: 25%;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.navTitle {
+  font-weight: bold;
+  font-size: 24px;
+  color: #9b9ba4;
+  position: absolute;
+  top: 3%;
+}
+.navTitleDarkThemes {
+  font-weight: bold;
+  font-size: 24px;
+  color: #f7f7f7;
+  position: absolute;
+  top: 3%;
 }
 #main {
-    transition: margin-left .5s;
-    padding: 16px;
-  }
+  transition: margin-left 0.5s;
+  padding: 16px;
+}
 .sidebar {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #0db2f2;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 107px;
+  overflow: hidden;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+  padding-top: 51px;
+}
+
+.sidebar a:hover {
+  color: #111;
+}
+
+.sidebar .openClosebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  left: 0;
+}
+.openClosebtnOnMobile {
+  position: absolute;
+  right: 25px;
+  font-size: 36px;
+  left: 7%;
+}
+.hrMobile {
+  border-top: 5px solid #0db2f2;
+  border-radius: 30px;
+  width: 47px;
+  margin-top: 8px;
+}
+.hr2Mobile {
+  margin-top: 8px;
+  border-top: 5px solid #0db2f2;
+  border-radius: 30px;
+  width: 29px;
+}
+.hr {
+  border-top: 4px solid #fff;
+  border-radius: 20px;
+  width: 47px;
+  margin-top: 8px;
+}
+.hr2 {
+  margin-top: 8px;
+  border-top: 4px solid #fff;
+  border-radius: 20px;
+  width: 29px;
+}
+.icons {
+  width: 26px;
+  height: 36px;
+  position: relative;
+}
+.badge {
+  top: 145px;
+  left: 3%;
+  position: fixed;
+  padding: 4px 8px;
+  border-radius: 50%;
+  background-color: #ff7a00;
+  color: white;
+}
+.icosText {
+  position: fixed;
+  font-weight: bold;
+  font-size: 18px;
+  display: inline;
+  margin-left: 30px;
+  margin-top: 10px;
+}
+.icosTextNot {
+  position: fixed;
+  font-weight: bold;
+  font-size: 18px;
+  display: inline;
+  margin-left: 45px;
+  margin-top: 10px;
+}
+.hr3 {
+  position: absolute;
+  border-top: 2px solid #fff;
+  width: 96px;
+  left: 0;
+}
+.setingIcon {
+  position: absolute;
+  top: 95%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.icosTextSetting {
+  position: absolute;
+  font-weight: bold;
+  font-size: 18px;
+  display: inline;
+  margin-left: 70px;
+  top: 95%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.openClosebtnOnMobile {
+  position: absolute;
+  top: 5%;
+}
+label {
+  font-weight: bold;
+  font-size: 16px;
+}
+input {
+  width: 257px;
+  height: 45px;
+  background: #f3f6f9;
+  color: #b5b5c3;
+  border: none;
+  border-radius: 10px;
+}
+.container {
+  position: absolute;
+  top: 20%;
+  left: 13%;
+}
+.toDoSelect {
+  width: 257px;
+  height: 45px;
+  background: #f3f6f9;
+  color: #b5b5c3;
+  border: none;
+  border-radius: 10px;
+}
+.toDoInputs {
+  display: inline-block;
+  margin-left: 36px;
+}
+.toDoInputsDarkThemes {
+  color: #fff;
+  display: inline-block;
+  margin-left: 36px;
+}
+.infoBox {
+  position: relative;
+  margin: 5% 3%;
+  width: 595px;
+  height: 88px;
+  background-color: #f3f6f9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+.infoBox:hover {
+  transform: scale(1.1);
+  transform-origin: 0 0;
+  transition: transform 0.5s ease;
+}
+.logUserInfoBox {
+  position: absolute;
+  top: -21%;
+  left: -3.5%;
+  width: 42px;
+  height: 42px;
+  border-radius: 50px;
+  background-color: #005b96;
+}
+.logUserInfoBoxBig {
+  position: absolute;
+  top: -10%;
+  left: -3.5%;
+  width: 42px;
+  height: 42px;
+  border-radius: 50px;
+  background-color: #005b96;
+}
+.userInfoBox {
+  color: #fff;
+  font-weight: bold;
+  margin-left: 25%;
+  position: absolute;
+  top: 21%;
+  text-transform: uppercase;
+}
+.titleInfoBox {
+  font-weight: bold;
+  position: absolute;
+  left: 8%;
+  padding-top: 5%;
+  font-size: 2vh;
+  color: #9b9ba4;
+}
+.dateInfoBox {
+  font-weight: bold;
+  position: absolute;
+  left: 8.1%;
+  font-size: 10px;
+  padding-top: 10%;
+  color: #9b9ba4;
+}
+.statusInfoBox {
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  font-size: 10px;
+  padding-top: 6.5%;
+  color: #9b9ba4;
+}
+.dots {
+  font-weight: bold;
+  position: absolute;
+  right: 20%;
+  font-size: 40px;
+  padding-top: 0.5%;
+  color: #0db2f2;
+  letter-spacing: 2px;
+}
+.logUserBigInfoBox {
+  width: 56px;
+  height: 56px;
+  background-color: #0db2f2;
+  border-radius: 50px;
+  position: absolute;
+  right: 5%;
+  margin-top: 2.7%;
+}
+.textlogUserBigInfoBox {
+  color: #fff;
+  font-weight: bold;
+  margin-left: 30%;
+  position: absolute;
+  top: 28%;
+  text-transform: uppercase;
+}
+.textInBox {
+  font-size: 13px;
+  color: #9b9ba4;
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  right: 3%;
+}
+.editTask {
+  position: absolute;
+  top: 85%;
+  left: 8%;
+  cursor: pointer;
+}
+.editBox {
+  position: absolute;
+  top: 10%;
+  right: 1%;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+}
+a {
+  text-decoration: none;
+}
+.popUpForm {
+  position: relative;
+  width: 547px;
+  height: 781px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  left: 35%;
+  margin-top: -10%;
+  animation-name: animatetop;
+  animation-duration: 0.8s;
+}
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
     top: 0;
-    left: 0;
-    background-color: #0DB2F2;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 107px;
-    overflow: hidden;
+    opacity: 1;
   }
-  
-  .sidebar a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #fff;
-    display: block;
-    transition: 0.3s;
-    padding-top: 51px;
+}
+.btnClosePopUp {
+  position: absolute;
+  top: 1.1%;
+  right: 2%;
+  border: none;
+  border-radius: 5px;
+  background: #0db2f2;
+  color: #fff;
+  font-weight: bold;
+}
+.spaceBetweenInputs {
+  position: relative;
+  top: 5%;
+  left: 9%;
+  margin-top: 5%;
+}
+.formInput {
+  width: 450px;
+  font-size: 14px;
+  padding-left: 3%;
+  color: #b5b5c3;
+  border: none;
+}
+.form-select {
+  width: 450px;
+  height: 45px;
+  border: none;
+  background: #f3f6f9;
+  color: #b5b5c3;
+  font-size: 14px;
+  border-radius: 10px;
+}
+textarea {
+  width: 450px;
+  height: 280px;
+  background: #f3f6f9;
+  border-radius: 10px;
+  border: none;
+  resize: none;
+}
+.btn {
+  position: absolute;
+  top: 90%;
+  left: 34%;
+  color: #fff;
+  font-weight: bold;
+  background: #0db2f2;
+  border-radius: 30px;
+  width: 177px;
+  height: 49.31px;
+}
+.btnDeleteInfoBox {
+  position: absolute;
+  top: 10%;
+  right: 1%;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.lbl {
+  position: absolute;
+  left: 1%;
+}
+.errorMsg {
+  position: absolute;
+  left: 1%;
+}
+.arrows {
+  background-image: url("../../assets/img/downArrows.svg");
+  background-position: calc(100% - 0.5rem), 100% 0;
+  background-size: 1.5em 1.5em;
+  background-repeat: no-repeat;
+}
+.arrows:focus {
+  transition: 0.3s ease;
+  background-image: url("../../assets/img/arrowUP.svg");
+}
+.formChangeColor {
+  position: absolute;
+  background-color: #111;
+  width: 400px;
+  height: 400px;
+  border-radius: 15px;
+  left: 40%;
+  top: 20%;
+  opacity: 0.9;
+  animation-name: animatetopThemes;
+  animation-duration: 1s;
+}
+@keyframes animatetopThemes {
+  from {
+    top: -500px;
+    opacity: 0;
   }
-  
-  .sidebar a:hover {
-    color: #111;
+  to {
+    top: 500;
+    opacity: 1;
   }
-  
-  .sidebar .openClosebtn {
+}
+.titleChangeColor {
+  color: #0db2f2;
+  font-weight: bold;
+  font-size: 22px;
+  position: absolute;
+  left: 25%;
+  top: 30%;
+  text-transform: uppercase;
+}
+.btnChangeThemes {
+  position: absolute;
+  border: none;
+  color: #0db2f2;
+  font-weight: bold;
+  background: #fff;
+  border-radius: 10px;
+  top: 50%;
+  left: 28%;
+  width: 177px;
+  height: 49.31px;
+}
+@media only screen and (max-width: 375px) {
+  .logUserImg {
     position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    left: 0;
+    right: 10%;
+    top: 4.5%;
   }
-  .openClosebtnOnMobile {
-    position: absolute;
-    right: 25px;
-    font-size: 36px;
-    left: 7%;
-  }
-  .hrMobile{
-    border-top: 5px solid #0DB2F2;
-    border-radius: 30px;
-    width: 47px;
-    margin-top: 8px;
-  }
-  .hr2Mobile{
-    margin-top: 8px;
-    border-top: 5px solid #0DB2F2;
-    border-radius: 30px;
-    width: 29px;
-  }
-  .hr{
-    border-top: 4px solid #fff;
-    border-radius: 20px;
-    width: 47px;
-    margin-top: 8px;
-  }
-  .hr2{
-    margin-top: 8px;
-    border-top: 4px solid #fff;
-    border-radius: 20px;
-    width: 29px;
-  }
-  .icons{
-      width: 26px;
-      height: 36px;
-      position: relative;
-  }
-  .badge {
-    top: 145px;
-    left: 3%;
-    position: fixed;
-    padding: 4px 8px;
-    border-radius: 50%;
-    background-color: #FF7A00;
-    color: white;
-  }
-  .icosText{
-    position: fixed;
-    font-weight: bold;
-    font-size: 18px;
-    display: inline;
-    margin-left: 30px;
-    margin-top: 10px;
-  }
-  .icosTextNot{
-    position: fixed;
-    font-weight: bold;
-    font-size: 18px;
-    display: inline;
-    margin-left: 45px;
-    margin-top: 10px;
-  }
-  .hr3{
-    position: absolute;
-    border-top: 2px solid #fff;
-    width: 96px;
-    left: 0;
-  }
-  .setingIcon{
-      position: absolute;
-      top: 95%;
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
-  }
-  .icosTextSetting{
-    position: absolute;
-    font-weight: bold;
-    font-size: 18px;
-    display: inline;
-    margin-left: 70px;
-    top: 95%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
-  .openClosebtnOnMobile{
-      position: absolute;
-      top: 5%;
-  }
-  label{
-    font-weight: bold;
-    font-size: 16px;
-  }
-  input{
-    width: 257px;
-    height: 45px;
-    background: #F3F6F9;
-    color: #B5B5C3;
-    border: none;
-    border-radius: 10px;
-  }
-  .container{
-    position: absolute;
-    top: 20%;
-    left: 13%;
-  }
-  .toDoSelect{
-    width: 257px;
-    height: 45px;
-    background: #F3F6F9;
-    color: #B5B5C3;
-    border: none;
-    border-radius: 10px;
-  }
-  .toDoInputs{
-    display:inline-block;
-    margin-left: 36px;
-  }
-  .infoBox{
-    position: relative;
-    margin: 5% 3%;
-    width: 595px;
-    height: 88px;
-    background-color: #F3F6F9;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  }
-  .infoBox:hover {
-    transform: scale(1.1); 
-    transform-origin: 0 0;
-    transition: transform .5s ease;
-  }
-  .logUserInfoBox{
-    position: absolute;
-    top: -21%;
-    left:  -3.5%;
-    width: 42px;
-    height: 42px;
-    border-radius: 50px;
-    background-color: #005B96;
-  }
-  .logUserInfoBoxBig{
-    position: absolute;
-    top: -10%;
-    left:  -3.5%;
-    width: 42px;
-    height: 42px;
-    border-radius: 50px;
-    background-color: #005B96;
-  }
-  .userInfoBox{
-    color: #fff;
-    font-weight: bold;
-    margin-left: 25%;
-    position: absolute;
-    top: 21%;
-    text-transform: uppercase;
-  }
-  .titleInfoBox{
-    font-weight: bold;
-    position: absolute;
-    left: 8%;
-    padding-top: 5%;
-    font-size: 2vh;
-    color: #9B9BA4;
-  }
-  .dateInfoBox{
-    font-weight: bold;
-    position: absolute;
-    left: 8.1%;
-    font-size: 10px;
-    padding-top: 10%;
-    color: #9B9BA4;
-  }
-  .statusInfoBox{
-    font-weight: bold;
-    position: absolute;
-    left: 50%;
-    font-size: 10px;
-    padding-top: 6.5%;
-    color: #9B9BA4;
-  }
-  .dots{
-    font-weight: bold;
+  .curentUserLoged {
     position: absolute;
     right: 20%;
-    font-size: 40px;
-    padding-top: 0.5%;
-    color: #0DB2F2;
-    letter-spacing: 2px;
+    top: 4%;
   }
-  .logUserBigInfoBox{
-    width: 56px;
-    height: 56px;
-    background-color: #0DB2F2;
-    border-radius: 50px;
+  .navTitle {
+    display: none;
+  }
+  .badge {
+    left: 15%;
+    position: fixed;
+  }
+  .container {
     position: absolute;
-    right: 5%;
-    margin-top: 2.7%;
+    left: 0;
   }
-  .textlogUserBigInfoBox{
-    color: #fff;
-    font-weight: bold;
-    margin-left: 30%;
-    position: absolute;
-    top: 28%;
-    text-transform: uppercase;
-  }
-  .textInBox{
-    font-size: 13px;
-    color: #9B9BA4;
-    position: absolute;
-    top: 50%;
-    left: 8%;
-    right: 3%;
-  }
-  .editTask{
-    position: absolute;
-    top: 85%;
-    left: 8%;
-    cursor: pointer;
-  }
-  .editBox{
-    position: absolute;
-    top: 10%;
-    right: 1%;
-    cursor: pointer;
-    width: 15px;
-    height: 15px;
-  }
-  a {
-    text-decoration: none;
-  }
-  .popUpForm{
+  .infoBox {
     position: relative;
-    width: 547px;
-    height: 781px;
-    background-color: #ffffff;
-    border-radius: 10px;
+    left: -5%;
+    margin: 10%;
+    height: 100px;
+    width: 90%;
+  }
+  .infoBox:hover {
+    transform: scale(1);
+    transition: transform 0.5s ease;
+  }
+  .logUserBigInfoBox {
+    display: none;
+  }
+  .statusInfoBox {
+    position: absolute;
+    top: 30%;
+    left: 44%;
+  }
+  .dots {
+    position: absolute;
+    top: 27%;
+    left: 47%;
+  }
+  .titleInfoBox {
+    position: absolute;
+    top: -5%;
+    left: 27%;
+  }
+  .dateInfoBox {
+    position: absolute;
+    top: 4%;
     left: 35%;
-    margin-top: -10%;
-    animation-name: animatetop;
-    animation-duration: 0.8s;
   }
-  @keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
-  }
-  .btnClosePopUp{
-    position: absolute;
-    top: 1.1%;
-    right: 2%;
-    border: none;
-    border-radius: 5px;
-    background: #0DB2F2;
-    color: #fff;
-    font-weight: bold;
-  }
-  .spaceBetweenInputs{
+  .popUpForm {
+    width: 90%;
+    height: 550px;
     position: relative;
-    top: 5%;
-    left: 9%;
-    margin-top: 5%;
+    left: 5%;
   }
-  .formInput{
-    width: 450px;
-    font-size: 14px;
-    padding-left: 3%;
-    color: #B5B5C3;
-    border: none;
+  .formInput {
+    width: 83%;
   }
-  .form-select{
-    width: 450px;
-    height: 45px;
-    border: none;
-    background: #F3F6F9;
-    color: #B5B5C3;
-    font-size: 14px;
-    border-radius: 10px;
+  .form-select {
+    width: 83%;
   }
-  textarea{
-    width: 450px;
-    height: 280px;
-    background: #F3F6F9;
-    border-radius: 10px;
-    border: none;
-    resize: none;
+  textarea {
+    width: 83%;
+    height: 100px;
   }
-  .btn{
+  .btn {
     position: absolute;
-    top: 90%;
-    left: 34%;
-    color: #fff;
-    font-weight: bold;
-    background: #0DB2F2;
-    border-radius: 30px;
-    width: 177px;
-    height: 49.31px;
+    left: 22.5%;
+    top: 85%;
   }
-  .btnDeleteInfoBox{
-    position: absolute;
-    top: 10%;
-    right: 1%;
-    width: 15px;
-    height: 15px;
-    cursor: pointer;
+  .spaceBetweenInputs {
+    position: relative;
+    margin-top: 8%;
   }
-  .lbl{
-    position: absolute;
-    left: 1%;
-  }
-  .errorMsg{
-    position: absolute;
-    left: 1%;
-  }
-  .arrows{
-    background-image:    url('../../assets/img/downArrows.svg');
-    background-position: calc(100% - .5rem), 100% 0;
-    background-size:  1.5em 1.5em;
-    background-repeat: no-repeat;
-  }
-  .arrows:focus {
-    transition:  0.3s ease;
-    background-image:    url('../../assets/img/arrowUP.svg');
-  }
-
-@media only screen and (max-width: 375px){
-    .logUserImg{
-        position: absolute;
-        right: 10%;
-        top: 4.5%;
-    }
-    .curentUserLoged{
-        position: absolute;
-        right: 20%;
-        top: 4%;
-    }
-    .navTitle{
-        display: none;
-    }
-    .badge {
-      left: 15%;
-      position: fixed;
-    }
-    .container{
-      position: absolute;
-      left: 0;
-    }
-    .infoBox{
-      position: relative;
-      left: -5%;
-      margin: 10%;
-      height: 100px;
-      width: 90%;
-    }
-    .infoBox:hover {
-      transform: scale(1); 
-      transition: transform .5s ease;
-    }
-    .logUserBigInfoBox{
-      display: none;
-    }
-    .statusInfoBox{
-      position: absolute;
-      top: 30%;
-      left: 44%;
-    }
-    .dots{
-      position: absolute;
-      top: 27%;
-      left: 47%;
-    }
-    .titleInfoBox{
-      position: absolute;
-      top: -5%;
-      left: 27%;
-    }
-    .dateInfoBox{
-      position: absolute;
-      top: 4%;
-      left: 35%;
-    }
-    .popUpForm{
-      width:  90%;
-      height: 550px;
-      position: relative;
-      left: 5%;
-    }
-    .formInput{
-      width:  83%;
-    }
-    .form-select{
-      width:  83%;
-    }
-    textarea{
-      width:  83%;
-      height: 100px;
-    }
-    .btn{
-      position: absolute;
-      left: 22.5%;
-     top: 85%;
-    }
-    .spaceBetweenInputs{
-      position: relative;
-      margin-top: 8%;
-    }
 }

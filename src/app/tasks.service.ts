@@ -23,7 +23,7 @@ export class TasksService {
       this.idAutoIncrement+=1;
       const box3 = new tasksBox(this.idAutoIncrement, 'Create UX test', new Date() ,'In progress','Amel','Amel', false, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
       this.idAutoIncrement+=1;
-      const box4 = new tasksBox(this.idAutoIncrement, 'Create HTML layout', new Date() ,'Completed','Smiljana','Smiljana', false , 'Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
+      const box4 = new tasksBox(this.idAutoIncrement, 'Create HTML layout', new Date() ,'Completed','Smiljana','Mihajlovic', false , 'Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis...');
 
       this.taskArray.push(box);
       this.taskArray.push(box2);

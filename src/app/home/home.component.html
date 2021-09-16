@@ -1,234 +1,373 @@
-    <div [ngClass]="isShown==false? 'container-fluid' : 'container-fluidWithOpacity'" ><!--Navigation-->
+<div
+  [ngClass]="
+    isShown == false && isOpenThemesForm == false
+      ? 'container-fluid'
+      : 'container-fluidWithOpacity'
+  "
+  [ngClass]="darkThemes == false ? 'container-fluid' : 'container-fluidDark'"
+>
+  <!--Navigation-->
 
-        <a href="javascript:void(0)" class="openClosebtnOnMobile" (click)="openClosebtnOnMobile()" *ngIf="isMobile == true">
-                <div  class="hrMobile"></div>
-                <div  class="hr2Mobile"></div>
-                <div  class="hrMobile"></div>
-        </a>
-        
-        <p class="navTitle" [style.margin-left.px]="marginLeftContent" id="main" *ngIf="isMobile == false">ALL TASKS - TEST WEB APP</p> <!--Move titile text when sidebar is open-->
-    
-        <span class="logUserImg">
-            <img [src] = UsrHead class="UsrHead"><br>
-            <img [src] = UsrBody class="UsrBody">
-        </span>
-        
-        <div class="curentUserLoged">
-            <p class="curentUser">{{loginUser[0]}}{{loginUser[1]}}</p>
+  <a
+    href="javascript:void(0)"
+    class="openClosebtnOnMobile"
+    (click)="openClosebtnOnMobile()"
+    *ngIf="isMobile == true"
+  >
+    <div class="hrMobile"></div>
+    <div class="hr2Mobile"></div>
+    <div class="hrMobile"></div>
+  </a>
+
+  <p
+    [ngClass]="darkThemes == true ? 'navTitleDarkThemes' : 'navTitle'"
+    class="navTitle"
+    [style.margin-left.px]="marginLeftContent"
+    id="main"
+    *ngIf="isMobile == false"
+  >
+    ALL TASKS - TEST WEB APP
+  </p>
+  <!--Move titile text when sidebar is open-->
+
+  <span class="logUserImg">
+    <img [src]="UsrHead" class="UsrHead" /><br />
+    <img [src]="UsrBody" class="UsrBody" />
+  </span>
+
+  <div class="curentUserLoged">
+    <p class="curentUser" (click)="LogOut()">
+      {{ loginUser[0] }}{{ loginUser[1] }}
+    </p>
+  </div>
+  <!--End navigation-->
+
+  <!--Sidebar-->
+  <div
+    [style.width.px]="widthmySidebar"
+    id="mySidebar"
+    class="sidebar"
+    *ngIf="showHideNav == false"
+  >
+    <a
+      href="javascript:void(0)"
+      class="openClosebtn"
+      (click)="OpenCloseNav()"
+      *ngIf="isMobile == false"
+    >
+      <div class="hr"></div>
+      <div class="hr2"></div>
+      <div class="hr"></div>
+    </a>
+    <a
+      href="javascript:void(0)"
+      class="openClosebtn"
+      (click)="openClosebtnOnMobile()"
+      *ngIf="isMobile == true"
+    >
+      <div class="hr"></div>
+      <div class="hr2"></div>
+      <div class="hr"></div>
+    </a>
+
+    <span *ngIf="widthmySidebar == 116">
+      <a>
+        <img [src]="vector" />
+        <span class="badge">{{ taskArray.length }}</span>
+      </a>
+      <a><div class="hr3"></div></a>
+      <a>
+        <img [src]="addIcon" class="addIcon" (click)="openPopUp()" />
+      </a>
+      <a>
+        <img [src]="editIcon" class="editIcon" (click)="editTaskIcon()" />
+      </a>
+      <a>
+        <img [src]="deleteIcon" class="deleteIcon" (click)="deleteIconNav()" />
+      </a>
+      <a><div class="hr3"></div></a>
+      <a>
+        <img
+          [src]="settingIcon"
+          class="setingIcon"
+          (click)="openFormChangeThemes()"
+        />
+      </a>
+    </span>
+
+    <span *ngIf="widthmySidebar > 116">
+      <a>
+        <img [src]="vector" />
+        <span class="badge">{{ taskArray.length }}</span>
+        <p class="icosTextNot">NOTIFICATIONS</p>
+      </a>
+      <a><div class="hr3"></div></a>
+      <a>
+        <img [src]="addIcon" class="addIcon" (click)="openPopUp()" />
+        <p class="icosText">CREATE TASK</p>
+      </a>
+      <a>
+        <img [src]="editIcon" class="editIcon" (click)="editTaskIcon()" />
+        <p class="icosText">EDIT TASK</p>
+      </a>
+      <a>
+        <img [src]="deleteIcon" class="deleteIcon" (click)="deleteIconNav()" />
+        <p class="icosText">REMOVE TASK</p>
+      </a>
+      <a><div class="hr3"></div></a>
+      <a>
+        <img [src]="settingIcon" class="setingIcon" />
+        <p class="icosTextSetting">SETTINGS</p>
+      </a>
+    </span>
+  </div>
+  <!--End sidebar-->
+
+  <!--toDoInputs-->
+  <div class="container">
+    <span
+      [ngClass]="darkThemes == true ? 'toDoInputsDarkThemes' : 'toDoInputs'"
+    >
+      <label>TO DO search</label>
+      <!-- <input type="text" class="form-control" placeholder="Type something" [(ngModel)]="search"> -->
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Type something"
+        [(ngModel)]="searchTitle"
+        (change)="SearchByTitle()"
+      />
+    </span>
+
+    <span
+      [ngClass]="darkThemes == true ? 'toDoInputsDarkThemes' : 'toDoInputs'"
+    >
+      <label>TO DO date from</label>
+      <input
+        type="date"
+        class="form-control"
+        placeholder="Pick a date"
+        [(ngModel)]="searchDate"
+      />
+    </span>
+
+    <span
+      [ngClass]="darkThemes == true ? 'toDoInputsDarkThemes' : 'toDoInputs'"
+    >
+      <label>TO DO date to</label>
+      <input type="date" class="form-control" placeholder="Pick a date" />
+    </span>
+
+    <span
+      [ngClass]="darkThemes == true ? 'toDoInputsDarkThemes' : 'toDoInputs'"
+    >
+      <label>TO DO status</label>
+      <select
+        class="toDoSelect form-control arrows"
+        [(ngModel)]="selectedValue"
+        (change)="SearchByStatus()"
+      >
+        <option disabled selected>{{ pickStatus }}</option>
+        <option *ngFor="let x of status" [ngValue]="x.name">
+          {{ x.name }}
+        </option>
+      </select>
+    </span>
+    <!--End toDoInputs-->
+
+    <!--infoBox-->
+    <span *ngFor="let x of taskArray">
+      <div class="infoBox" *ngIf="x.showMore == false">
+        <img
+          [src]="trashDelete"
+          class="btnDeleteInfoBox"
+          *ngIf="
+            showTrash == true &&
+            loginUser &&
+            loginUser.toLowerCase() == x.owner.toLowerCase()
+          "
+          (click)="deleteBox(x)"
+          data-toggle="tooltip"
+          title="Delete task"
+        />
+
+        <div class="logUserInfoBox">
+          <span class="userInfoBox">{{ x.owner[0] }}{{ x.owner[1] }}</span>
         </div>
-    <!--End navigation-->
-    
-    <!--Sidebar-->
-        <div [style.width.px]="widthmySidebar" id="mySidebar" class="sidebar" *ngIf="showHideNav == false">
-            <a href="javascript:void(0)" class="openClosebtn" (click)="OpenCloseNav()" *ngIf="isMobile == false">
-                <div  class="hr"></div>
-                <div  class="hr2"></div>
-                <div  class="hr"></div>
-            </a>
-            <a href="javascript:void(0)" class="openClosebtn" (click)="openClosebtnOnMobile()" *ngIf="isMobile == true">
-                <div  class="hr"></div>
-                <div  class="hr2"></div>
-                <div  class="hr"></div>
-            </a>
-            
-            <span *ngIf="widthmySidebar == 116">
-                <a>
-                    <img [src] = vector >
-                    <span class="badge">{{taskArray.length}}</span>
-                </a>
-                <a><div  class="hr3"></div></a>
-                <a>
-                    <img [src] = addIcon class="addIcon" (click)="openPopUp()">
-                </a>
-                <a>
-                    <img [src] = editIcon class="editIcon" (click)="editTaskIcon()">
-                </a>
-                <a>
-                    <img [src] = deleteIcon class="deleteIcon" (click)="deleteIconNav()">
-                </a>
-                <a><div  class="hr3"></div></a>
-                <a>
-                    <img [src] = settingIcon class="setingIcon">
-                </a>
-            </span>
-        
-            <span *ngIf="widthmySidebar > 116">
-                <a>
-                    <img [src] = vector>
-                    <span class="badge">{{taskArray.length}}</span>
-                    <p class="icosTextNot" >NOTIFICATIONS</p>
-                </a>
-                <a><div  class="hr3"></div></a>
-                <a>
-                    <img [src] = addIcon class="addIcon" (click)="openPopUp()">
-                    <p class="icosText" >CREATE TASK</p>
-                </a>
-                <a>
-                    <img [src] = editIcon class="editIcon" (click)="editTaskIcon()">
-                    <p class="icosText" >EDIT TASK</p>
-                </a>
-                <a>
-                    <img [src] = deleteIcon class="deleteIcon" (click)="deleteIconNav()">
-                    <p class="icosText" >REMOVE TASK</p>
-                </a>
-                <a><div  class="hr3"></div></a>
-                <a>
-                    <img [src] = settingIcon class="setingIcon">
-                    <p class="icosTextSetting" >SETTINGS</p>
-                </a>
-            </span>
-            
-          </div>
-    <!--End sidebar-->
-    
-    <!--toDoInputs-->
-        <div class="container">
-            <span class="toDoInputs">
-              <label>TO DO search</label>
-              <!-- <input type="text" class="form-control" placeholder="Type something" [(ngModel)]="search"> -->
-              <input type="text" class="form-control" placeholder="Type something" [(ngModel)]="searchTitle" (change)="SearchByTitle()">
-            </span>
-      
-            <span class="toDoInputs">
-              <label>TO DO date from</label>
-              <input type="date" class="form-control" placeholder="Pick a date" [(ngModel)]="searchDate" >
-            </span>
-      
-            <span class="toDoInputs">
-              <label>TO DO date to</label>
-              <input type="date" class="form-control" placeholder="Pick a date" >
-            </span>
-      
-            <span class="toDoInputs">
-              <label>TO DO status</label>
-              <select class="toDoSelect form-control arrows" [(ngModel)]="selectedValue" (change)="SearchByStatus()">
-                    <option disabled selected>{{pickStatus}}</option>
-                    <option *ngFor="let x of status" [ngValue]="x.name">{{x.name}}</option>
-              </select>
-              
-            </span>
-         <!--End toDoInputs-->
-    
-    
-        <!--infoBox-->
-        <span *ngFor="let x of taskArray">
-    
-            <div class="infoBox" *ngIf="x.showMore == false">
-                <img [src] = trashDelete class="btnDeleteInfoBox" *ngIf="showTrash == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" 
-                (click)='deleteBox(x)' data-toggle="tooltip" title="Delete task">
 
-                    <div class="logUserInfoBox">
-                        <span class="userInfoBox">{{x.owner[0]}}{{x.owner[1]}}</span>
-                    </div>
-                    
-                    <p class="titleInfoBox">{{x.title}}</p>
-    
-                    <p class="dateInfoBox">Created on: {{x.date | date:'shortDate'}}</p>
-    
-                    <p class="statusInfoBox">{{x.status}}</p>
-    
-                        <a href="javascript:void(0)" class="dots" (click)="showMore(x.id)">...</a>
-    
-                        <div class="logUserBigInfoBox">
-                            <p class="textlogUserBigInfoBox">{{x.user[0]}}{{x.user[1]}}</p>
-                        </div>
-                        <img [src] = editBox class="editBox" *ngIf="showEditButton == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" 
-                        (click)="openEditPopUP(x)" data-toggle="tooltip" title="Edit task">
-                </div>
-            <!--End infoBox-->
-    
-    
-    
-            <div class="infoBox" *ngIf="x.showMore == true" [style.height.px]="showMoreBoxHeight" >
-                <img [src] = trashDelete class="btnDeleteInfoBox" *ngIf="showTrash == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" 
-                (click)='deleteBox(x)' data-toggle="tooltip" title="Delete task">
-                <div class="logUserInfoBoxBig">
-                    <span class="userInfoBox">{{x.owner[0]}}{{x.owner[1]}}</span>
-                </div>
-        
-                <p class="titleInfoBox">{{x.title}}</p>
-        
-                <p class="dateInfoBox">Created on: {{x.date | date:'shortDate'}}</p>
-        
-                <p class="statusInfoBox">{{x.status}}</p>
-        
-                    <a href="javascript:void(0)" class="dots" (click)="showMore(x.id)">...</a>
-        
-                    <div class="logUserBigInfoBox">
-                        <p class="textlogUserBigInfoBox">{{x.user[0]}}{{x.user[1]}}</p>
-                    </div>
-        
-                    <p class="textInBox">{{x.text}}</p>
+        <p class="titleInfoBox">{{ x.title }}</p>
 
-                    <img [src] = editBox class="editBox" *ngIf="showEditButton == true && loginUser && loginUser.toLowerCase()==x.owner.toLowerCase()" 
-                    (click)="openEditPopUP(x)" data-toggle="tooltip" title="Edit task">
-                </div>
-        </span>
-        <!--End infoBox-->
-    
+        <p class="dateInfoBox">Created on: {{ x.date | date: "shortDate" }}</p>
+
+        <p class="statusInfoBox">{{ x.status }}</p>
+
+        <a href="javascript:void(0)" class="dots" (click)="showMore(x.id)"
+          >...</a
+        >
+
+        <div class="logUserBigInfoBox">
+          <p class="textlogUserBigInfoBox">{{ x.user[0] }}{{ x.user[1] }}</p>
         </div>
-    
-    </div>
+        <img
+          [src]="editBox"
+          class="editBox"
+          *ngIf="
+            showEditButton == true &&
+            loginUser &&
+            loginUser.toLowerCase() == x.owner.toLowerCase()
+          "
+          (click)="openEditPopUP(x)"
+          data-toggle="tooltip"
+          title="Edit task"
+        />
+      </div>
+      <!--End infoBox-->
+
+      <div
+        class="infoBox"
+        *ngIf="x.showMore == true"
+        [style.height.px]="showMoreBoxHeight"
+      >
+        <img
+          [src]="trashDelete"
+          class="btnDeleteInfoBox"
+          *ngIf="
+            showTrash == true &&
+            loginUser &&
+            loginUser.toLowerCase() == x.owner.toLowerCase()
+          "
+          (click)="deleteBox(x)"
+          data-toggle="tooltip"
+          title="Delete task"
+        />
+        <div class="logUserInfoBoxBig">
+          <span class="userInfoBox">{{ x.owner[0] }}{{ x.owner[1] }}</span>
+        </div>
+
+        <p class="titleInfoBox">{{ x.title }}</p>
+
+        <p class="dateInfoBox">Created on: {{ x.date | date: "shortDate" }}</p>
+
+        <p class="statusInfoBox">{{ x.status }}</p>
+
+        <a href="javascript:void(0)" class="dots" (click)="showMore(x.id)"
+          >...</a
+        >
+
+        <div class="logUserBigInfoBox">
+          <p class="textlogUserBigInfoBox">{{ x.user[0] }}{{ x.user[1] }}</p>
+        </div>
+
+        <p class="textInBox">{{ x.text }}</p>
+
+        <img
+          [src]="editBox"
+          class="editBox"
+          *ngIf="
+            showEditButton == true &&
+            loginUser &&
+            loginUser.toLowerCase() == x.owner.toLowerCase()
+          "
+          (click)="openEditPopUP(x)"
+          data-toggle="tooltip"
+          title="Edit task"
+        />
+      </div>
+    </span>
+    <!--End infoBox-->
+  </div>
+</div>
 
 <!--popUpForm-->
 <div class="container">
-    
-    <form class="popUpForm" *ngIf="isShown == true" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <form
+    class="popUpForm"
+    *ngIf="isShown == true"
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="spaceBetweenInputs">
+      <label class="lbl">To Do name</label><br />
+      <input
+        [(ngModel)]="task.title"
+        type="text"
+        class="form-control formInput"
+        placeholder="Type a TO DO name"
+        maxlength="20"
+        formControlName="ToDoName"
+        [ngClass]="{ 'is-invalid': submitted && f.ToDoName.errors }"
+      />
 
-        <div class="spaceBetweenInputs">
-            <label class="lbl">To Do name</label><br>
-            <input [(ngModel)]="task.title" 
-                type="text" 
-                class="form-control formInput" 
-                placeholder="Type a TO DO name" 
-                maxlength="20"
-                formControlName="ToDoName" 
-                [ngClass]="{ 'is-invalid': submitted && f.ToDoName.errors }">
-
-                <div *ngIf="submitted && f.ToDoName.errors" class="invalid-feedback">
-                    <div *ngIf="f.ToDoName.errors.required" class="errorMsg">To Do Name is required</div>
-                </div>
+      <div *ngIf="submitted && f.ToDoName.errors" class="invalid-feedback">
+        <div *ngIf="f.ToDoName.errors.required" class="errorMsg">
+          To Do Name is required
         </div>
-
-        <div class="spaceBetweenInputs">
-            <label class="lbl">TO DO status</label><br>
-                <select class="form-select toDoSelect arrows" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
-                    <option value="" disabled>{{pickStatus}}</option>
-                    <option *ngFor="let x of status" [ngValue]="x.name">{{x.name}}</option>
-                </select>
-        </div>
+      </div>
+    </div>
 
     <div class="spaceBetweenInputs">
-            <label class="lbl">Assigned To</label><br>
-            <input [(ngModel)]="task.user"  
-            type="text" 
-            class="form-control formInput" 
-            placeholder="Enter name or email address"
-            maxlength="20"
-            formControlName="Address" 
-            [ngClass]="{ 'is-invalid': submitted && f.Address.errors }">
+      <label class="lbl">TO DO status</label><br />
+      <select
+        class="form-select toDoSelect arrows"
+        [(ngModel)]="selectedValue"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        <option value="" disabled>{{ pickStatus }}</option>
+        <option *ngFor="let x of status" [ngValue]="x.name">
+          {{ x.name }}
+        </option>
+      </select>
+    </div>
 
-                <div *ngIf="submitted && f.Address.errors" class="invalid-feedback">
-                    <div *ngIf="f.Address.errors.required" class="errorMsg">Email address is required</div>
-                </div>
-        </div><br>
+    <div class="spaceBetweenInputs">
+      <label class="lbl">Assigned To</label><br />
+      <input
+        [(ngModel)]="task.user"
+        type="text"
+        class="form-control formInput"
+        placeholder="Enter name or email address"
+        maxlength="20"
+        formControlName="Address"
+        [ngClass]="{ 'is-invalid': submitted && f.Address.errors }"
+      />
 
-        <div class="spaceBetweenInputs">
-            <label class="lbl">Description</label><br>
-            <textarea [(ngModel)]="task.text" 
-            class="form-control" 
-            formControlName="Description" 
-            [ngClass]="{ 'is-invalid': submitted && f.Description.errors }"></textarea>
-
-                <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
-                    <div *ngIf="f.Description.errors.required" class="errorMsg">Description is required</div>
-                </div>
+      <div *ngIf="submitted && f.Address.errors" class="invalid-feedback">
+        <div *ngIf="f.Address.errors.required" class="errorMsg">
+          Email address is required
         </div>
-        
-        <input type="submit" value="{{addOrEdit}}" class="btn">
-        <button type="button" class="btnClosePopUp" (click)="closePopUp()">X</button>
-        
-    </form>
+      </div>
+    </div>
+    <br />
 
+    <div class="spaceBetweenInputs">
+      <label class="lbl">Description</label><br />
+      <textarea
+        [(ngModel)]="task.text"
+        class="form-control"
+        formControlName="Description"
+        [ngClass]="{ 'is-invalid': submitted && f.Description.errors }"
+      ></textarea>
+
+      <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
+        <div *ngIf="f.Description.errors.required" class="errorMsg">
+          Description is required
+        </div>
+      </div>
+    </div>
+
+    <input type="submit" value="{{ addOrEdit }}" class="btn" />
+    <button type="button" class="btnClosePopUp" (click)="closePopUp()">
+      X
+    </button>
+  </form>
 </div>
 <!--popUpForm-->
+
+<!--Change background color-->
+<div *ngIf="isOpenThemesForm == true" class="formChangeColor">
+  <p class="titleChangeColor">Use A Dark Theme</p>
+  <button class="btnChangeThemes" type="button" (click)="changeThemes()">
+    Accept
+  </button>
+</div>
+<!--Change background color-->

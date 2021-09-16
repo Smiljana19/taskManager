@@ -86,7 +86,11 @@ input{
     right: 60px;
     text-decoration: underline;
   }
-  
+  .erorMsg{
+    position: absolute; 
+    color: red;
+    left: 45%;
+  }
   @media only screen and (max-width: 280px){
     .FooterRightText {
       padding-top: 10%;
