@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit {
   trashDelete: string = 'assets/img/trashDelete.svg';
   arrowUP: string = 'assets/img/arrowUP.svg';
   downArrows: string = 'assets/img/downArrows.svg';
+  moon: string = 'assets/img/moon.svg';
+  sun: string = 'assets/img/sun.svg';
 
   isMobile = false;
   showHideNav = false;
@@ -65,6 +67,9 @@ export class HomeComponent implements OnInit {
   isOpenThemesForm = false;
   darkThemes = false;
 
+  isChecked: boolean = false;
+
+  darkOrLight = 'USE A DARK THEME';
   //VARIABLES END
 
   constructor(
@@ -194,15 +199,27 @@ export class HomeComponent implements OnInit {
   openPopUp() {
     this.isShown == false ? (this.isShown = true) : (this.isShown = false);
 
-    if (this.isShown == true) {
-      document.body.style.background = '#0DB2F24D';
-      if (window.innerWidth <= 375) {
-        this.showHideNav = true;
+    if (this.darkThemes == true) {
+      if (this.isShown == true) {
+        if (window.innerWidth <= 375) {
+          this.showHideNav = true;
+        }
+        window.scroll(0, 0);
+      } else {
+        document.body.style.background = '#111';
       }
-      window.scroll(0, 0);
     } else {
-      document.body.style.background = 'white';
+      if (this.isShown == true) {
+        document.body.style.background = '#0DB2F24D';
+        if (window.innerWidth <= 375) {
+          this.showHideNav = true;
+        }
+        window.scroll(0, 0);
+      } else {
+        document.body.style.background = 'white';
+      }
     }
+
     this.showTrash = false;
     this.showEditButton = false;
     this.addOrEdit = '+ Add TO DO';
@@ -210,10 +227,18 @@ export class HomeComponent implements OnInit {
     this.onReset();
   }
   closePopUp() {
-    if (this.isShown == true) {
-      this.isShown = false;
-      document.body.style.background = 'white';
-      this.task = new tasksBox(0, '', new Date(), '', '', '', false, '');
+    if (this.darkThemes == true) {
+      if (this.isShown == true) {
+        this.isShown = false;
+        document.body.style.background = '#111';
+        this.task = new tasksBox(0, '', new Date(), '', '', '', false, '');
+      }
+    } else {
+      if (this.isShown == true) {
+        this.isShown = false;
+        document.body.style.background = 'white';
+        this.task = new tasksBox(0, '', new Date(), '', '', '', false, '');
+      }
     }
     this.showPickaStatus();
   }
@@ -232,10 +257,13 @@ export class HomeComponent implements OnInit {
 
     if (this.isShown == true) {
       this.isShown = false;
-      document.body.style.background = 'white';
+      if (this.darkThemes == true) {
+        document.body.style.background = '#111';
+      } else {
+        document.body.style.background = '#fff';
+      }
     }
     this.task = new tasksBox(0, '', new Date(), '', '', '', false, '');
-
     this.selectedValue = '';
   }
 
@@ -254,7 +282,11 @@ export class HomeComponent implements OnInit {
 
     if (this.isShown == true) {
       this.isShown = false;
-      document.body.style.background = 'white';
+      if (this.darkThemes == true) {
+        document.body.style.background = '#111';
+      } else {
+        document.body.style.background = '#fff';
+      }
     }
     this.task = new tasksBox(0, '', new Date(), '', '', '', false, '');
 
@@ -374,13 +406,43 @@ export class HomeComponent implements OnInit {
   }
 
   openFormChangeThemes() {
-    this.isOpenThemesForm == false
-      ? (this.isOpenThemesForm = true)
-      : (this.isOpenThemesForm = false);
+    if (this.darkThemes == true) {
+      this.isOpenThemesForm == false
+        ? (this.isOpenThemesForm = true)
+        : (this.isOpenThemesForm = false);
+
+      document.body.style.background = '#111';
+    } else {
+      this.isOpenThemesForm == false
+        ? (this.isOpenThemesForm = true)
+        : (this.isOpenThemesForm = false);
+
+      document.body.style.background = '#0DB2F24D';
+    }
   }
-  changeThemes() {
-    this.isOpenThemesForm = false;
-    this.darkThemes = true;
-    document.body.style.background = '#111';
+
+  btnCloseThemesForm() {
+    if (this.darkThemes == true) {
+      if (this.isOpenThemesForm == true) {
+        this.isOpenThemesForm = false;
+        document.body.style.background = '#111';
+      }
+    } else {
+      if (this.isOpenThemesForm == true) {
+        this.isOpenThemesForm = false;
+        document.body.style.background = '#fff';
+      }
+    }
+  }
+  changeThemesToggle() {
+    if (this.isChecked == true) {
+      this.darkThemes = false;
+      document.body.style.background = '#fff';
+      this.darkOrLight = 'USE A DARK THEME';
+    } else {
+      this.darkThemes = true;
+      document.body.style.background = '#111';
+      this.darkOrLight = 'USE A LIGHT THEME';
+    }
   }
 }

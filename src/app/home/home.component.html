@@ -4,8 +4,10 @@
       ? 'container-fluid'
       : 'container-fluidWithOpacity'
   "
-  [ngClass]="darkThemes == false ? 'container-fluid' : 'container-fluidDark'"
 >
+  <div
+    [ngClass]="darkThemes == false ? 'container-fluid' : 'container-fluidDark'"
+  ></div>
   <!--Navigation-->
 
   <a
@@ -367,10 +369,28 @@
 <!--popUpForm-->
 
 <!--Change background color-->
-<div *ngIf="isOpenThemesForm == true" class="formChangeColor">
-  <p class="titleChangeColor">Use A Dark Theme</p>
-  <button class="btnChangeThemes" type="button" (click)="changeThemes()">
-    Accept
+<div
+  *ngIf="isOpenThemesForm == true"
+  [ngClass]="
+    darkThemes == true ? 'formChangeThemeColorLight' : 'formChangeThemeColor'
+  "
+>
+  <p class="titleChangeColor">{{ darkOrLight }}</p>
+
+  <button type="button" class="btnClosePopUp" (click)="btnCloseThemesForm()">
+    X
   </button>
+
+  <label class="switch">
+    <input
+      type="checkbox"
+      (click)="changeThemesToggle()"
+      [(ngModel)]="isChecked"
+    />
+    <span class="slider round"></span>
+  </label>
+
+  <img [src]="moon" class="moon" />
+  <img [src]="sun" class="sun" />
 </div>
 <!--Change background color-->
