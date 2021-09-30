@@ -6,7 +6,7 @@
   "
 >
   <div
-    [ngClass]="darkThemes == false ? 'container-fluid' : 'container-fluidDark'"
+    [ngClass]="darkThemes == true ? 'container-fluidDark' : 'container-fluid'"
   ></div>
   <!--Navigation-->
 
@@ -23,7 +23,6 @@
 
   <p
     [ngClass]="darkThemes == true ? 'navTitleDarkThemes' : 'navTitle'"
-    class="navTitle"
     [style.margin-left.px]="marginLeftContent"
     id="main"
     *ngIf="isMobile == false"
@@ -31,17 +30,19 @@
     ALL TASKS - TEST WEB APP
   </p>
   <!--Move titile text when sidebar is open-->
+  <div>
+    <img [src]="logout" class="logout" (click)="LogOut()" />
+  </div>
 
-  <span class="logUserImg">
+  <div class="logUserImg">
     <img [src]="UsrHead" class="UsrHead" /><br />
     <img [src]="UsrBody" class="UsrBody" />
-  </span>
+  </div>
 
   <div class="curentUserLoged">
-    <p class="curentUser" (click)="LogOut()">
-      {{ loginUser[0] }}{{ loginUser[1] }}
-    </p>
+    <p class="curentUser">{{ loginUser[0] }}{{ loginUser[1] }}</p>
   </div>
+
   <!--End navigation-->
 
   <!--Sidebar-->
@@ -118,7 +119,11 @@
       </a>
       <a><div class="hr3"></div></a>
       <a>
-        <img [src]="settingIcon" class="setingIcon" />
+        <img
+          [src]="settingIcon"
+          class="setingIcon"
+          (click)="openFormChangeThemes()"
+        />
         <p class="icosTextSetting">SETTINGS</p>
       </a>
     </span>

@@ -5,6 +5,7 @@ import { TasksService } from '../tasks.service';
 import { AuthService } from '../auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { ToastAlertComponent } from '../../app/toast-alert/toast-alert.component';
 
 @Component({
   selector: 'app-home',
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
   downArrows: string = 'assets/img/downArrows.svg';
   moon: string = 'assets/img/moon.svg';
   sun: string = 'assets/img/sun.svg';
+  logout: string = 'assets/img/logout.svg';
 
   isMobile = false;
   showHideNav = false;
@@ -77,7 +79,8 @@ export class HomeComponent implements OnInit {
     private taskService: TasksService,
     private formBuilder: FormBuilder,
     public datepipe: DatePipe,
-    private authService: AuthService
+    private authService: AuthService,
+    public toastcomponent: ToastAlertComponent
   ) {
     this.isMobile = this.deviceService.isMobile();
 
@@ -92,8 +95,9 @@ export class HomeComponent implements OnInit {
   }
 
   status = [
-    { id: 1, name: 'In progress' },
-    { id: 2, name: 'Completed' },
+    { id: 1, name: 'All tasks' }, //newer change name for this
+    { id: 2, name: 'In progress' },
+    { id: 3, name: 'Completed' },
   ];
   selectedValue = '';
 
@@ -243,6 +247,21 @@ export class HomeComponent implements OnInit {
     this.showPickaStatus();
   }
   addNewTaskBox() {
+    if (this.taskArray.length == 0) {
+      this.toastcomponent.callTost('Task', 'Task number is zero.', 'INFO');
+    } else {
+      var findLoginUserTask = this.taskArray.filter(
+        (x) => x.owner.toLowerCase() == this.loginUser.toLowerCase()
+      );
+      if (findLoginUserTask.length == 0) {
+        this.toastcomponent.callTost(
+          'New task is available',
+          'You are created a new task.',
+          'SUCCESS'
+        ); // SUCCESS | INFO | NONE | DANGER | WARNING
+      }
+    }
+
     let getLoginUser = localStorage.getItem('LoginUser');
 
     if (getLoginUser !== null) {
@@ -293,6 +312,22 @@ export class HomeComponent implements OnInit {
     this.selectedValue = '';
   }
   deleteIconNav() {
+    //info
+    if (this.taskArray.length == 0) {
+      this.toastcomponent.callTost('Task', 'Task number is zero.', 'INFO');
+    } else {
+      var findLoginUserTask = this.taskArray.filter(
+        (x) => x.owner.toLowerCase() == this.loginUser.toLowerCase()
+      );
+      if (findLoginUserTask.length == 0) {
+        this.toastcomponent.callTost(
+          'Create task',
+          'You are not created your task.',
+          'INFO'
+        ); // SUCCESS | INFO | NONE | DANGER | WARNING
+      }
+    }
+
     if (this.deleteIkon == true) {
       this.showTrash == false
         ? (this.showTrash = true)
@@ -305,8 +340,38 @@ export class HomeComponent implements OnInit {
   deleteBox(task: any) {
     this.taskService.delete(task);
     this.taskArray.length;
+
+    if (this.taskArray.length == 0) {
+      this.toastcomponent.callTost('Task', 'Task number is zero.', 'INFO');
+    } else {
+      var findLoginUserTask = this.taskArray.filter(
+        (x) => x.owner.toLowerCase() == this.loginUser.toLowerCase()
+      );
+      if (findLoginUserTask.length == 0) {
+        this.toastcomponent.callTost(
+          'Delete task',
+          'You have deleted the task.',
+          'DANGER'
+        ); // SUCCESS | INFO | NONE | DANGER | WARNING
+      }
+    }
   }
   editTaskIcon() {
+    if (this.taskArray.length == 0) {
+      this.toastcomponent.callTost('Task', 'Task number is zero.', 'INFO');
+    } else {
+      var findLoginUserTask = this.taskArray.filter(
+        (x) => x.owner.toLowerCase() == this.loginUser.toLowerCase()
+      );
+      if (findLoginUserTask.length == 0) {
+        this.toastcomponent.callTost(
+          'Create task',
+          'You are not created your task.',
+          'INFO'
+        ); // SUCCESS | INFO | NONE | DANGER | WARNING
+      }
+    }
+
     if (this.editIkon == true) {
       this.showEditButton == false
         ? (this.showEditButton = true)
@@ -363,7 +428,7 @@ export class HomeComponent implements OnInit {
   }
 
   SearchByStatus() {
-    if (this.selectedValue == '') {
+    if (this.selectedValue == '' || this.selectedValue == this.status[0].name) {
       this.taskArray = this.taskService.get();
     } else {
       this.taskArray = this.taskService
@@ -437,7 +502,7 @@ export class HomeComponent implements OnInit {
   changeThemesToggle() {
     if (this.isChecked == true) {
       this.darkThemes = false;
-      document.body.style.background = '#fff';
+      document.body.style.background = '#0DB2F24D';
       this.darkOrLight = 'USE A DARK THEME';
     } else {
       this.darkThemes = true;

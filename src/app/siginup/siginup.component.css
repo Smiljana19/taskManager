@@ -1,226 +1,227 @@
-.container{
-    color: #011F4B;
-    overflow: hidden;
+.container {
+  color: #011f4b;
+  overflow: hidden;
 }
-.SiginPosition{
+.SiginPosition {
+  text-align: center;
+}
+.SigTitile {
+  font-size: 36px;
+  font-weight: 700;
+  color: #0db2f2;
+}
+.spaceRows {
+  margin-top: 28px;
+}
+.formatLblTxt {
+  color: #0db2f2;
+  position: absolute;
+  left: 38.5%;
+  font-size: 16px;
+  font-weight: bold;
+}
+input {
+  width: 450px;
+  height: 56px;
+  font-size: 14px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background: #f3f6f9;
+  color: #b5b5c3;
+  border: none;
+  border-radius: 10px;
+  padding-left: 22px;
+}
+.btn {
+  margin: 48px 0px 20px 0px;
+  width: 450px;
+  height: 56px;
+  background-color: #0db2f2;
+  color: #fff;
+  font-weight: bold;
+  font-size: 24px;
+  border-radius: 10px;
+  border: none;
+}
+.btn:hover {
+  border: 2px solid #0d9fda;
+}
+.loginLink {
+  text-decoration: none;
+  margin-top: 35px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #0db2f2;
+}
+.OrSignUpUsing {
+  margin-top: 13px;
+  font-size: 14px;
+  color: #b5b5c3;
+}
+.icons {
+  padding-left: 14px;
+}
+.container-fluid {
+  margin-top: 21px;
+  position: relative;
+}
+.FooterleftText {
+  position: absolute;
+  font-weight: bold;
+  font-size: 16px;
+  color: #005b96;
+  margin-left: 60px;
+}
+.FooterRightText {
+  position: absolute;
+  font-weight: bold;
+  font-size: 16px;
+  color: #005b96;
+  right: 60px;
+  text-decoration: underline;
+}
+@media only screen and (max-width: 280px) {
+  .icons {
+    padding-left: 5px;
+  }
+  .btn {
+    margin-top: 10%;
+    width: 100%;
+  }
+  input {
+    width: 100%;
+  }
+  .formatLblTxt {
+    left: 5%;
+  }
+  .SiginPosition {
     text-align: center;
-}
-.SigTitile{
-    font-size: 36px;
-    font-weight: 700;
-    color: #0DB2F2;
-}
-.spaceRows{
-    margin-top: 28px;
-}
-.formatLblTxt{
+  }
+  .FooterRightText {
     position: absolute;
-    left: 38.5%;
-    font-size: 16px;
-    font-weight: bold;
-}
-input{
-    width: 450px;
-    height: 56px;
-    font-size: 14px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background: #F3F6F9;
-    color: #B5B5C3;
-    border: none;
-    border-radius: 10px;
-    padding-left: 22px;
-}
-  .btn{
-    margin: 48px 0px 20px 0px;
-    width: 450px;
-    height: 56px;
-    background-color: #0DB2F2;
-    color: #fff;
-    font-weight: bold;
-    font-size: 24px;
-    border-radius: 10px;
-    border: none;
   }
-  .btn:hover{
-    border: 2px solid #0d9fda;
-  }
-  .loginLink{
-    text-decoration: none;
-    margin-top: 35px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #0DB2F2;
-  }
-  .OrSignUpUsing{
-    margin-top: 13px;
-    font-size: 14px;
-    color: #B5B5C3;
-  }
-  .icons{
-    padding-left: 14px;
-  }
-  .container-fluid{
-    margin-top: 21px;
+  .FooterleftText {
     position: relative;
+    left: 5%;
   }
-  .FooterleftText{
+}
+@media only screen and (max-width: 375px) {
+  .container {
+    margin-top: -10%;
+  }
+  .icons {
+    padding-left: 5px;
+  }
+  .btn {
+    margin-top: 10%;
+    width: 100%;
+  }
+  input {
+    width: 100%;
+  }
+  .formatLblTxt {
+    left: 5%;
+  }
+  .SiginPosition {
+    text-align: center;
+  }
+  .FooterRightText {
+    margin: 0;
+    right: 10px;
+    top: 0;
+  }
+  .FooterleftText {
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .container {
+    margin-top: -15%;
+  }
+  .icons {
+    padding-left: 5px;
+  }
+  .btn {
+    margin-top: 10%;
+    width: 100%;
+  }
+  input {
+    width: 100%;
+  }
+  .formatLblTxt {
+    left: 5%;
+  }
+  .SiginPosition {
+    text-align: center;
+  }
+  .FooterRightText {
+    margin: 0;
+    right: 10px;
+    top: 0;
+  }
+  .FooterleftText {
+    margin: 0;
+  }
+}
+.errorMsg {
+  position: absolute;
+  right: 39%;
+}
+.infoMSgGreen {
+  position: absolute;
+  color: #04cf3d;
+  font-weight: bold;
+  top: 75%;
+  right: 47%;
+}
+.infoMSgRed {
+  position: absolute;
+  color: red;
+  font-weight: bold;
+  top: 75%;
+  right: 35%;
+}
+.errorMsgEmail {
+  position: absolute;
+  right: 39%;
+}
+@media only screen and (max-width: 375px) {
+  .SigTitile {
+    margin-top: 20%;
+  }
+  .icons {
+    padding-left: 5px;
+  }
+  .btn {
+    margin-top: 10%;
+    width: 100%;
+  }
+  input {
+    width: 100%;
+  }
+  .formatLblTxt {
+    left: 5%;
+  }
+  .SiginPosition {
+    text-align: center;
+  }
+  .errorMsg {
     position: absolute;
-    font-weight: bold;
-    font-size: 16px;
-    color: #005B96;
-    margin-left: 60px;
+    right: 5%;
   }
-  .FooterRightText{
+  .infoMSgGreen {
     position: absolute;
-    font-weight: bold;
-    font-size: 16px;
-    color: #005B96;
-    right: 60px;
-    text-decoration: underline;
-  }
-  @media only screen and (max-width: 280px) {
-    .icons {
-      padding-left: 5px;
-    }
-    .btn {
-      margin-top: 10%;
-        width: 100%;
-    }
-    input {
-      width: 100%;
-    }
-    .formatLblTxt {
-      left: 5%;
-    }
-    .SiginPosition {
-      text-align: center;
-    }
-    .FooterRightText {
-      position: absolute;
-    }
-    .FooterleftText{
-      position: relative;
-      left: 5%;
-    }
-  }
-  @media only screen and (max-width: 375px) {
-    .container{
-      margin-top: -10%;
-    }
-    .icons {
-      padding-left: 5px;
-    }
-    .btn {
-      margin-top: 10%;
-        width: 100%;
-    }
-    input {
-      width: 100%;
-    }
-    .formatLblTxt {
-      left: 5%;
-    }
-    .SiginPosition {
-      text-align: center;
-    }
-    .FooterRightText {
-      margin: 0;
-      right: 10px;
-      top: 0;
-    }
-    .FooterleftText{
-      margin: 0;
-    }
-  }
-  @media only screen and (max-width: 768px) {
-    .container{
-      margin-top: -15%;
-    }
-    .icons {
-      padding-left: 5px;
-    }
-    .btn {
-      margin-top: 10%;
-        width: 100%;
-    }
-    input {
-      width: 100%;
-    }
-    .formatLblTxt {
-      left: 5%;
-    }
-    .SiginPosition {
-      text-align: center;
-    }
-    .FooterRightText {
-      margin: 0;
-      right: 10px;
-      top: 0;
-    }
-    .FooterleftText{
-      margin: 0;
-    }
-  }
-  .errorMsg{
-    position: absolute;
-    right: 39%;
-  }
-  .infoMSgGreen{
-    position: absolute;
-    color: #04cf3d;
-    font-weight: bold;
-    top: 75%;
-    right: 47%;
-  }
-  .infoMSgRed{
-    position: absolute;
-    color: red;
-    font-weight: bold;
-    top: 75%;
+    top: 86.5%;
     right: 35%;
   }
-  .errorMsgEmail{
+  .infoMSgRed {
+    position: relative;
+    top: 75%;
+    right: 0%;
+  }
+  .errorMsgEmail {
     position: absolute;
-    right: 39%;
+    right: 5%;
   }
-  @media only screen and (max-width: 375px) {
-    .SigTitile{
-      margin-top: 20%;
-    }
-    .icons {
-      padding-left: 5px;
-    }
-    .btn {
-      margin-top: 10%;
-        width: 100%;
-    }
-    input {
-      width: 100%;
-    }
-    .formatLblTxt {
-      left: 5%;
-    }
-    .SiginPosition {
-      text-align: center;
-    }
-    .errorMsg{
-      position: absolute;
-      right: 5%;
-    }
-    .infoMSgGreen{
-      position: absolute;
-      top: 86.5%;
-      right: 35%;
-    }
-    .infoMSgRed{
-      position: relative;
-      top: 75%;
-      right: 0%;
-    }
-    .errorMsgEmail{
-      position: absolute;
-      right: 5%;
-    }
-  }
+}

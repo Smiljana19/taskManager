@@ -13,6 +13,11 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
 
 import { DatePipe } from '@angular/common';
+//import { ToastAlertComponent } from './toast-alert/toast-alert.component';
+import {
+  NgxAwesomePopupModule,
+  ToastNotificationConfigModule,
+} from '@costlydeveloper/ngx-awesome-popup';
 
 @NgModule({
   declarations: [
@@ -20,18 +25,20 @@ import { DatePipe } from '@angular/common';
     LoginComponent,
     SiginupComponent,
     ResetPasswordComponent,
-    HomeComponent
+    HomeComponent,
+    //ToastAlertComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    FormsModule
+    FormsModule,
+
+    NgxAwesomePopupModule.forRoot(), // Essential, mandatory main module.
+    ToastNotificationConfigModule.forRoot(), // Essential, mandatory toast module.
   ],
-  providers: [
-    DatePipe
-  ],
-  bootstrap: [AppComponent]
+  providers: [DatePipe],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
