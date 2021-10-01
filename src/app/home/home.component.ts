@@ -95,9 +95,13 @@ export class HomeComponent implements OnInit {
   }
 
   status = [
-    { id: 1, name: 'All tasks' }, //newer change name for this
+    { id: 1, name: 'All tasks' },
     { id: 2, name: 'In progress' },
     { id: 3, name: 'Completed' },
+  ];
+  status2 = [
+    { id: 1, name: 'In progress' },
+    { id: 2, name: 'Completed' },
   ];
   selectedValue = '';
 

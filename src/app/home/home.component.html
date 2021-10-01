@@ -323,7 +323,7 @@
         [ngModelOptions]="{ standalone: true }"
       >
         <option value="" disabled>{{ pickStatus }}</option>
-        <option *ngFor="let x of status" [ngValue]="x.name">
+        <option *ngFor="let x of status2" [ngValue]="x.name">
           {{ x.name }}
         </option>
       </select>
